@@ -17,6 +17,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.noteTextView becomeFirstResponder];
+    self.view.layer.cornerRadius = 8.f;
+//    self.view.backgroundColor = [UIColor blueColor];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
