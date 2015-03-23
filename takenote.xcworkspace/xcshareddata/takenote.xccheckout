@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>2E21FC29-3DD5-41BC-836B-51926B046D7E</string>
+	<key>IDESourceControlProjectName</key>
+	<string>takenote</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>2810FCCD8E1821C2E2FABD79A85DBA1C25FD2C8C</key>
+		<string>https://bitbucket.org/pungme/takenote.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>takenote.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>2810FCCD8E1821C2E2FABD79A85DBA1C25FD2C8C</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://bitbucket.org/pungme/takenote.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>2810FCCD8E1821C2E2FABD79A85DBA1C25FD2C8C</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>2810FCCD8E1821C2E2FABD79A85DBA1C25FD2C8C</string>
+			<key>IDESourceControlWCCName</key>
+			<string>takenote</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FirstViewController : UIViewController
+@interface TakeNoteViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITextView *noteTextView;
 
