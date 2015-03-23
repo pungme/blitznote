@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4F1CBA4865CAAE32769FF71A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A354654FE5B2034FF162EBEB /* libPods.a */; };
+		720712FD1AC0CED800B08E47 /* NotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 720712FC1AC0CED800B08E47 /* NotesViewController.m */; };
 		72217FB21AC0148000D3F891 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 72217FB11AC0148000D3F891 /* main.m */; };
 		72217FB51AC0148000D3F891 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 72217FB41AC0148000D3F891 /* AppDelegate.m */; };
 		72217FB81AC0148000D3F891 /* TakeNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72217FB71AC0148000D3F891 /* TakeNoteViewController.m */; };
@@ -31,6 +32,8 @@
 /* Begin PBXFileReference section */
 		06DE73F32F81945031822C4B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4197C57DA38EBD955E5B9C86 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		720712FB1AC0CED800B08E47 /* NotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesViewController.h; sourceTree = "<group>"; };
+		720712FC1AC0CED800B08E47 /* NotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesViewController.m; sourceTree = "<group>"; };
 		72217FAC1AC0148000D3F891 /* takenote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = takenote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		72217FB01AC0148000D3F891 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		72217FB11AC0148000D3F891 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -112,6 +115,8 @@
 				72217FB41AC0148000D3F891 /* AppDelegate.m */,
 				72217FB61AC0148000D3F891 /* TakeNoteViewController.h */,
 				72217FB71AC0148000D3F891 /* TakeNoteViewController.m */,
+				720712FB1AC0CED800B08E47 /* NotesViewController.h */,
+				720712FC1AC0CED800B08E47 /* NotesViewController.m */,
 				72217FB91AC0148100D3F891 /* SecondViewController.h */,
 				72217FBA1AC0148100D3F891 /* SecondViewController.m */,
 				72217FBC1AC0148100D3F891 /* Main.storyboard */,
@@ -283,6 +288,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				720712FD1AC0CED800B08E47 /* NotesViewController.m in Sources */,
 				72217FBB1AC0148100D3F891 /* SecondViewController.m in Sources */,
 				72217FB51AC0148000D3F891 /* AppDelegate.m in Sources */,
 				72217FB81AC0148000D3F891 /* TakeNoteViewController.m in Sources */,

@@ -22,6 +22,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.noteTextView.delegate = self;
+    self.noteTextView.scrollsToTop = YES;
     [self.noteTextView becomeFirstResponder];
     self.view.layer.cornerRadius = 8.f;
     
@@ -38,6 +41,22 @@
 //    self.view.backgroundColor = [UIColor blueColor];
     // Do any additional setup after loading the view, typically from a nib.
 }
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (scrollView.contentOffset.y < 0)
+    {
+        NSLog(@"to the toppp");
+        [self dismissViewControllerAnimated:YES completion:nil];
+//        NSLog(@"content offset y = %f",scrollView.contentOffset.y);
+    }else {
+        NSLog(@"normal scroll");
+    }
+}
+
+//-(void)scrollViewDidScrollToTop:(UIScrollView *)scrollView{
+//    NSLog(@"to the toppp");
+//}
 
 -(void) appBecomeActive: (NSNotification *)noification{
     NSLog(@"app become active again ...");
