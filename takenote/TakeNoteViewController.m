@@ -44,9 +44,10 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    if (scrollView.contentOffset.y < 0)
+//    NSLog(@"content offset = %f", scrollView.contentOffset.y);
+    if (scrollView.contentOffset.y < -100)
     {
-        NSLog(@"to the toppp");
+//        NSLog(@"to the toppp");
         [self dismissViewControllerAnimated:YES completion:nil];
 //        NSLog(@"content offset y = %f",scrollView.contentOffset.y);
     }else {
