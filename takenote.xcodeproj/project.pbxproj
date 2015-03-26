@@ -17,6 +17,8 @@
 		72217FC01AC0148100D3F891 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72217FBF1AC0148100D3F891 /* Images.xcassets */; };
 		72217FC31AC0148100D3F891 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72217FC11AC0148100D3F891 /* LaunchScreen.xib */; };
 		72217FCF1AC0148100D3F891 /* takenoteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 72217FCE1AC0148100D3F891 /* takenoteTests.m */; };
+		7254C8351AC4C3F0003C8A42 /* CircleLineButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7254C8341AC4C3F0003C8A42 /* CircleLineButton.m */; };
+		7254C8381AC4C638003C8A42 /* UIColor+CustomColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 7254C8371AC4C638003C8A42 /* UIColor+CustomColors.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,10 @@
 		72217FC81AC0148100D3F891 /* takenoteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = takenoteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		72217FCD1AC0148100D3F891 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		72217FCE1AC0148100D3F891 /* takenoteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = takenoteTests.m; sourceTree = "<group>"; };
+		7254C8331AC4C3F0003C8A42 /* CircleLineButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleLineButton.h; sourceTree = "<group>"; };
+		7254C8341AC4C3F0003C8A42 /* CircleLineButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleLineButton.m; sourceTree = "<group>"; };
+		7254C8361AC4C638003C8A42 /* UIColor+CustomColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+CustomColors.h"; sourceTree = "<group>"; };
+		7254C8371AC4C638003C8A42 /* UIColor+CustomColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CustomColors.m"; sourceTree = "<group>"; };
 		A354654FE5B2034FF162EBEB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -111,8 +117,11 @@
 		72217FAE1AC0148000D3F891 /* takenote */ = {
 			isa = PBXGroup;
 			children = (
+				7254C8391AC4C63C003C8A42 /* opensource */,
 				72217FB31AC0148000D3F891 /* AppDelegate.h */,
 				72217FB41AC0148000D3F891 /* AppDelegate.m */,
+				7254C8331AC4C3F0003C8A42 /* CircleLineButton.h */,
+				7254C8341AC4C3F0003C8A42 /* CircleLineButton.m */,
 				72217FB61AC0148000D3F891 /* TakeNoteViewController.h */,
 				72217FB71AC0148000D3F891 /* TakeNoteViewController.m */,
 				720712FB1AC0CED800B08E47 /* NotesViewController.h */,
@@ -151,6 +160,15 @@
 				72217FCD1AC0148100D3F891 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7254C8391AC4C63C003C8A42 /* opensource */ = {
+			isa = PBXGroup;
+			children = (
+				7254C8361AC4C638003C8A42 /* UIColor+CustomColors.h */,
+				7254C8371AC4C638003C8A42 /* UIColor+CustomColors.m */,
+			);
+			name = opensource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,10 +307,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				720712FD1AC0CED800B08E47 /* NotesViewController.m in Sources */,
+				7254C8351AC4C3F0003C8A42 /* CircleLineButton.m in Sources */,
 				72217FBB1AC0148100D3F891 /* SecondViewController.m in Sources */,
 				72217FB51AC0148000D3F891 /* AppDelegate.m in Sources */,
 				72217FB81AC0148000D3F891 /* TakeNoteViewController.m in Sources */,
 				72217FB21AC0148000D3F891 /* main.m in Sources */,
+				7254C8381AC4C638003C8A42 /* UIColor+CustomColors.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

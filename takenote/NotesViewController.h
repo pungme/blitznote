@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CircleLineButton.h"
 
-@interface NotesViewController : UIViewController
-
+@interface NotesViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
+//@property (weak, nonatomic) IBOutlet UITableView *noteTableView;
+@property (nonatomic, strong) NSMutableArray *myNotes;
+@property (nonatomic, strong) CircleLineButton *oButton;
 @end
