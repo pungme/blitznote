@@ -33,6 +33,25 @@ CGPoint pointNow;
 
 @implementation NotesViewController
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.view.layer.cornerRadius = 8.f;
+    self.noteTableView.layer.cornerRadius = 8.f;
+//    self.oButton = [CircleLineButton buttonWithType:UIButtonTypeRoundedRect];
+    
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(appBecomeActive:)
+                                                 name: @"didBecomeActive"
+                                               object: nil];
+    
+    [self addTakeNoteButton];
+    
+    [self.noteTableView setShowsVerticalScrollIndicator:NO];
+    self.noteTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    //load user defaults data ...
+//    [self addOverlayButton];
+}
+
 - (void)addTakeNoteButton
 {
     float circleRadius = 85; // screen width factor ...
@@ -50,30 +69,12 @@ CGPoint pointNow;
     // [self.dragView addTarget:self action:@selector(touchDown:) forControlEvents:UIControlEventTouchDown];
     //    [self.draggableCircle addGestureRecognizer:recognizer];
     [self.takeNoteButton addTarget:self action:@selector(takeNoteTap:) forControlEvents:UIControlEventTouchUpInside];
-//    [self.takeNoteButton addTarget:self action:@selector(scaleToDefault:) forControlEvents:UIControlEventTouchDragExit];
+    //    [self.takeNoteButton addTarget:self action:@selector(scaleToDefault:) forControlEvents:UIControlEventTouchDragExit];
     
     [self.view insertSubview:self.takeNoteButton aboveSubview:self.noteTableView];
-//    [self.view addSubview:self.draggableCircle];
+    //    [self.view addSubview:self.draggableCircle];
 }
 
-
-
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    self.view.layer.cornerRadius = 8.f;
-    self.noteTableView.layer.cornerRadius = 8.f;
-//    self.oButton = [CircleLineButton buttonWithType:UIButtonTypeRoundedRect];
-    
-    [[NSNotificationCenter defaultCenter] addObserver: self
-                                             selector: @selector(appBecomeActive:)
-                                                 name: @"didBecomeActive"
-                                               object: nil];
-    
-    [self addTakeNoteButton];
-    //load user defaults data ...
-//    [self addOverlayButton];
-}
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     pointNow = scrollView.contentOffset;
 }
@@ -102,9 +103,13 @@ CGPoint pointNow;
     if(isFirstTime == YES){
         isFirstTime = NO;
         [self performSegueWithIdentifier: @"takenotesegue" sender: self];
+    }else{
+//        [self.noteTableView reloadData];
+//        [self.noteTableView reloadRowsAtIndexPaths:0 withRowAnimation:UITableViewRowAnimationFade];
     }
-    
     [self.noteTableView reloadData];
+
+//    [self.noteTableView reloadData];
 //    [self performSegueWithIdentifier: @"takenotesegue" sender: self];
 }
 
