@@ -30,6 +30,7 @@
 
 BOOL isFirstTime = YES;
 CGPoint pointNow;
+
 @implementation NotesViewController
 
 - (void)addTakeNoteButton
@@ -97,17 +98,46 @@ CGPoint pointNow;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 //    id theHighScore = [defaults objectForKey:@"listOfAllDebts"];
     self.myNotes = [NSMutableArray arrayWithArray:[defaults objectForKey:NOTE_LIST_KEY]];
-//    self.myNotes = [defaults objectForKey:NOTE_LIST_KEY];
-//    NSLog(@"note list =%@",self.myNotes);
-//    NSLog(@"note content = %@", [self.myNotes[0] objectForKey:NOTE_CONTENT]);
     
     if(isFirstTime == YES){
         isFirstTime = NO;
         [self performSegueWithIdentifier: @"takenotesegue" sender: self];
     }
     
+    [self.noteTableView reloadData];
 //    [self performSegueWithIdentifier: @"takenotesegue" sender: self];
 }
+
+
+
+- (void)deleteNoteAtIndex:(NSInteger)index {
+    //tryout
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
+    NSMutableArray * allNoteRecords = [[NSMutableArray alloc] init];
+    NSMutableArray * currentNoteRecords = [defaults objectForKey:NOTE_LIST_KEY];
+
+    if(currentNoteRecords.count > 0){ // if there are any current record ...
+        //do the freaking copy
+        allNoteRecords = [[defaults objectForKey:NOTE_LIST_KEY] mutableCopy];
+    }
+    
+    [allNoteRecords removeObjectAtIndex:index];
+//
+//    NSString * noteContent = self.noteTextView.text; // change this shit
+//    NSDate * date = [NSDate date];
+//    
+//    NSDictionary * newNote = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:noteContent,date, nil]
+//                                                         forKeys:[NSArray arrayWithObjects:NOTE_CONTENT,NOTE_DATE, nil]];
+//    
+//    //    NSLog(@"new record = %@",newNote);
+//    [allNoteRecords insertObject:newNote atIndex:0];
+//    //    NSLog(@"all note record = %@", allNoteRecords);
+    [defaults setObject:allNoteRecords forKey:NOTE_LIST_KEY];
+//    // do not forget to save changes
+    [defaults synchronize];
+}
+
 #pragma mark - UITableView
 - (BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -121,6 +151,7 @@ CGPoint pointNow;
         NSArray *indexPaths = [NSArray arrayWithObject:indexPath];
         [[self myNotes] removeObjectAtIndex:[indexPath row]];
         [[self noteTableView] deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
+        [self deleteNoteAtIndex:[indexPath row]];
 //        [self.noteTableView reloadData];
         NSLog(@"delete at indexPath = %@",indexPath );
         // Delete the row from the data source

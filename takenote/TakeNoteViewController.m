@@ -16,6 +16,7 @@
 @interface TakeNoteViewController ()
 
 @end
+BOOL isSaving = NO;
 
 @implementation TakeNoteViewController
 
@@ -47,6 +48,9 @@
     // Do any additional setup after loading the view, typically from a nib.
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    isSaving = NO;
+}
 
 - (void)saveData {
     //tryout
@@ -70,11 +74,12 @@
                                                            forKeys:[NSArray arrayWithObjects:NOTE_CONTENT,NOTE_DATE, nil]];
     
 //    NSLog(@"new record = %@",newNote);
-    [allNoteRecords addObject:newNote];
+    [allNoteRecords insertObject:newNote atIndex:0];
 //    NSLog(@"all note record = %@", allNoteRecords);
     [defaults setObject:allNoteRecords forKey:NOTE_LIST_KEY];
     // do not forget to save changes
     [defaults synchronize];
+    isSaving = NO;
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -98,12 +103,16 @@
     {
         NSLog(@"dismiss ...");
         [self dismissViewControllerAnimated:YES completion:^{
-            //
-            if([self.noteTextView.text length] != 0){
-                [self saveData];
-            }
+            // to make it call only once ...
+//            if([self.noteTextView.text length] != 0){
+//                [self saveData];
+//            }
         }];
         
+        if([self.noteTextView.text length] != 0 && isSaving == NO){
+            isSaving = YES;
+            [self saveData];
+        }
         //check if text is empty.
 //        NSLog(@"content offset y = %f",scrollView.contentOffset.y);
     }else {
