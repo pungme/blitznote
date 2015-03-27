@@ -172,6 +172,17 @@ CGPoint pointNow;
     return [self.myNotes count];
     
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    CGFloat rowHeight = 100.f; // assume the small size by default
+    //TODO : predict by the length of text ...
+//    PFObject *trendBox = [self.loadedObjects objectAtIndex:indexPath.row];
+//    if ([trendBox[kDDBoxSizeTypeKey] isEqualToString:kDDBoxSizeTypeLarge]) {
+//        rowHeight = 240.f;
+//    }
+    return rowHeight;
+}
+
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *identifier = @"MyNoteCell";
     
