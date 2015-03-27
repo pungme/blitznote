@@ -126,11 +126,11 @@ CGPoint pointNow;
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
       self.takeNoteButton.transform = CGAffineTransformMakeTranslation(0, scrollView.contentOffset.y);
-    
-    if (scrollView.contentOffset.y<pointNow.y) {
+    NSLog(@"content offset= %f",scrollView.contentOffset.y);
+    if (scrollView.contentOffset.y < pointNow.y) {
         NSLog(@"down");
         //push the button up
-    } else if (scrollView.contentOffset.y>pointNow.y) {
+    } else if (scrollView.contentOffset.y > pointNow.y) {
         NSLog(@"up");
         // push the button down
     }

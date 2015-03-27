@@ -56,13 +56,13 @@
     
     // the mutalbe array of all debts
     NSMutableArray * allNoteRecords = [[NSMutableArray alloc] init];
-    
     NSMutableArray * currentNoteRecords = [defaults objectForKey:NOTE_LIST_KEY];
     
     if(currentNoteRecords.count > 0){ // if there are any current record ...
         //do the freaking copy
         allNoteRecords = [[defaults objectForKey:NOTE_LIST_KEY] mutableCopy];
     }
+    
     NSString * noteContent = self.noteTextView.text; // change this shit
     NSDate * date = [NSDate date];
     
@@ -84,10 +84,10 @@
     // set background color according to the contentOffset ...
     
     
-//    self.view.frame = CGRectMake(self.view.frame.origin.x,
-//                                            - scrollView.contentOffset.y,
-//                                           self.view.frame.size.width,
-//                                           self.view.frame.size.height);
+    self.view.frame = CGRectMake(self.view.frame.origin.x,
+                                            - scrollView.contentOffset.y,
+                                           self.view.frame.size.width,
+                                           self.view.frame.size.height);
     
     NSLog(@"contentOffset = %f",scrollView.contentOffset.y);
     CGFloat colorOffset = (scrollView.contentOffset.y) / 350;
