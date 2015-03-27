@@ -84,10 +84,10 @@
     // set background color according to the contentOffset ...
     
     
-    self.view.frame = CGRectMake(self.view.frame.origin.x,
-                                            - scrollView.contentOffset.y,
-                                           self.view.frame.size.width,
-                                           self.view.frame.size.height);
+//    self.view.frame = CGRectMake(self.view.frame.origin.x,
+//                                            - scrollView.contentOffset.y,
+//                                           self.view.frame.size.width,
+//                                           self.view.frame.size.height);
     
     NSLog(@"contentOffset = %f",scrollView.contentOffset.y);
     CGFloat colorOffset = (scrollView.contentOffset.y) / 350;
