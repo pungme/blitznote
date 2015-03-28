@@ -12,5 +12,7 @@
 @interface NotesViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
 //@property (weak, nonatomic) IBOutlet UITableView *noteTableView;
 @property (nonatomic, strong) NSMutableArray *myNotes;
+@property (nonatomic, strong) NSIndexPath* expandedRow;
 //@property (nonatomic, strong) CircleLineButton *oButton;
 @end
+

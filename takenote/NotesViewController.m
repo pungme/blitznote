@@ -16,6 +16,7 @@
 
 @interface MyNoteCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UITextView *noteTextView;
+@property (weak, nonatomic) IBOutlet UILabel *noteDate;
 
 @end
 
@@ -54,10 +55,10 @@ CGPoint pointNow;
 
 - (void)addTakeNoteButton
 {
-    float circleRadius = 85; // screen width factor ...
+    float circleRadius = 80; // screen width factor ...
     
     self.takeNoteButton = [[UIControl alloc] initWithFrame:CGRectMake(0, 0, circleRadius, circleRadius)];
-    self.takeNoteButton.center = CGPointMake(self.view.center.x, self.view.bounds.size.height - 70);
+    self.takeNoteButton.center = CGPointMake(self.view.center.x, self.view.bounds.size.height - 60);
     self.takeNoteButton.layer.cornerRadius = CGRectGetWidth(self.takeNoteButton.bounds)/2;
     self.takeNoteButton.backgroundColor = [UIColor customBlueColor];
     
@@ -174,13 +175,58 @@ CGPoint pointNow;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat rowHeight = 100.f; // assume the small size by default
+//    static NSString *identifier = @"MyNoteCell";
+//    MyNoteCell *cell = (MyNoteCell *)[tableView dequeueReusableCellWithIdentifier:identifier];
+    CGFloat defaultRowHeight = 90.f; // assume that this is the defaut size
+    if ([indexPath isEqual:self.expandedRow]) {
+        
+        ///TODO: check if we have a second line !!!
+        NSString *note = [[self.myNotes objectAtIndex:indexPath.row] objectForKey:@"noteContent"];
+        CGRect screenRect = [[UIScreen mainScreen] bounds];
+        CGFloat screenWidth = screenRect.size.width;
+        NSDictionary *attributes = @{NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:27]};
+        // NSString class method: boundingRectWithSize:options:attributes:context is
+        // available only on ios7.0 sdk.
+        NSString *text = note;
+        CGRect rect = [text boundingRectWithSize:CGSizeMake(screenWidth, CGFLOAT_MAX)
+                                         options:NSStringDrawingUsesLineFragmentOrigin
+                                      attributes:attributes
+                                         context:nil];
+//        _constraintTextViewHeight.constant = CGRectGetHeight(rect)
+        
+        //// calculate the row height here ?
+        NSLog(@"height of items = %f", CGRectGetHeight(rect));
+        CGFloat newRowHeight = CGRectGetHeight(rect) + 55.f;
+        if(newRowHeight>defaultRowHeight){
+            return CGRectGetHeight(rect) + 55.f;
+        }
+    }
+
+//    NSString *note = [[self.myNotes objectAtIndex:indexPath.row] objectForKey:@"noteContent"];
+//    int numLine = cell.noteTextView.contentSize.height/cell.noteTextView.font.lineHeight;
+//    NSLog(@"num line = %i",numLine);
+//    NSLog(@"note size = %f", cell.noteTextView.contentSize.height);
+    
+//    rowHeight = rowHeight* numLine;
+//    rowHeight = [note length]*2.3;
+//    CGRect screenRect = [[UIScreen mainScreen] bounds];
+//    CGFloat screenWidth = screenRect.size.width;
+//    [cell.noteTextView layoutIfNeeded];
+//    [cell.noteTextView sizeThatFits:CGSizeMake(cell.noteTextView.frame.size.width, MAXFLOAT)];
+//    cell.noteTextView.text = note;
+//    NSLog(@"textView height = %f",[cell.noteTextView intrinsicContentSize].height);
+//    CGSize sizeThatFitsTextView = [cell.noteTextView sizeThatFits:cell.noteTextView.frame.size];
+
+//    rowHeight = [cell.noteTextView intrinsicContentSize].height;
+//    CGFloat screenHeight = screenRect.size.height;
+    
+//    CGSize textViewSize = [note bound];
     //TODO : predict by the length of text ...
 //    PFObject *trendBox = [self.loadedObjects objectAtIndex:indexPath.row];
 //    if ([trendBox[kDDBoxSizeTypeKey] isEqualToString:kDDBoxSizeTypeLarge]) {
 //        rowHeight = 240.f;
 //    }
-    return rowHeight;
+    return defaultRowHeight;
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -192,10 +238,32 @@ CGPoint pointNow;
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
     
+    cell.noteTextView.userInteractionEnabled =NO;
     cell.noteTextView.text = [[self.myNotes objectAtIndex:indexPath.row] objectForKey:@"noteContent"];
+    
+    NSDate *noteDate = [[self.myNotes objectAtIndex:indexPath.row] objectForKey:NOTE_DATE];
+    NSDateFormatter *formatter=[[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"dd MM YYYY HH:mm:ss"];
+    cell.noteDate.text = [formatter stringFromDate:noteDate];
+    
+    
+    UIView *bgColorView = [[UIView alloc] init];
+    bgColorView.backgroundColor = [UIColor colorWithRed:0.97 green:0.97 blue:0.97 alpha:1.0];
+    [cell setSelectedBackgroundView:bgColorView];
+//    NSDate *gmtDateTime=[gmtFormatter dateFromString:strGMT];
+    
     
     return cell;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"Detail Disclosure Tapped");
+    // Set expanded cell then tell tableView to redraw with animation
+    self.expandedRow = indexPath;
+    [self.noteTableView beginUpdates];
+    [self.noteTableView endUpdates];
+}
+
 - (void) takeNoteTap :(id)sender{
     [self performSegueWithIdentifier: @"takenotesegue" sender: self];
 }
