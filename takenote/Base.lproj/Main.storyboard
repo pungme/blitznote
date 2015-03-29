@@ -55,14 +55,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Second View" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="zEq-FU-wV5">
-                                <rect key="frame" x="195" y="279" width="209.5" height="41.5"/>
+                                <rect key="frame" x="195" y="279" width="210" height="42"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loaded by SecondViewController" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDk-cv-Gan">
-                                <rect key="frame" x="192" y="329" width="215.5" height="17"/>
+                                <rect key="frame" x="192" y="329" width="216" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -96,21 +96,34 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xo4-h7-GXS" id="XPh-lt-yyI">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Take that note Hello there" translatesAutoresizingMaskIntoConstraints="NO" id="1Cd-rP-7aR">
-                                            <rect key="frame" x="8" y="8" width="584" height="151.5"/>
+                                        <textView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Cd-rP-7aR">
+                                            <rect key="frame" x="8" y="8" width="584" height="152"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="27"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12/12/2015" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="66a-NI-hf4">
+                                            <rect key="frame" x="15" y="138" width="140" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="140" id="3g1-0B-hbR"/>
+                                                <constraint firstAttribute="height" constant="21" id="jux-J0-ACO"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="13"/>
+                                            <color key="textColor" red="0.70196080207824707" green="0.70196080207824707" blue="0.70196080207824707" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="centerY" secondItem="1Cd-rP-7aR" secondAttribute="centerY" id="1PW-US-XFQ"/>
                                         <constraint firstItem="1Cd-rP-7aR" firstAttribute="trailing" secondItem="XPh-lt-yyI" secondAttribute="trailingMargin" id="PTT-Xi-wUm"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="66a-NI-hf4" secondAttribute="bottom" constant="0.5" id="WiO-uR-bLu"/>
+                                        <constraint firstItem="66a-NI-hf4" firstAttribute="leading" secondItem="1Cd-rP-7aR" secondAttribute="leading" constant="7" id="XSI-g0-1O1"/>
                                         <constraint firstItem="1Cd-rP-7aR" firstAttribute="top" secondItem="XPh-lt-yyI" secondAttribute="topMargin" id="tui-Td-PGd"/>
                                         <constraint firstItem="1Cd-rP-7aR" firstAttribute="leading" secondItem="XPh-lt-yyI" secondAttribute="leadingMargin" id="yAv-Mf-Wyf"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="noteDate" destination="66a-NI-hf4" id="iuk-co-beD"/>
                                     <outlet property="noteTextView" destination="1Cd-rP-7aR" id="KJy-L3-a8o"/>
                                 </connections>
                             </tableViewCell>

@@ -30,6 +30,7 @@
 @end
 
 BOOL isFirstTime = YES;
+BOOL isScrollUp = NO;
 CGPoint pointNow;
 
 @implementation NotesViewController
@@ -53,14 +54,46 @@ CGPoint pointNow;
 //    [self addOverlayButton];
 }
 
+- (UIColor*)getColorFromWeekDay:(NSString*)weekday{
+    UIColor *color = [UIColor customBlueColor];
+    if([weekday isEqualToString:@"1"]){
+        color = [UIColor customRedColor];
+    }else if([weekday isEqualToString:@"2"]){
+        color = [UIColor customYellowColor];
+    }else if([weekday isEqualToString:@"3"]){
+        color = [UIColor customPinkColor];
+    }else if([weekday isEqualToString:@"4"]){
+        color = [UIColor customGreenColor];
+    }else if([weekday isEqualToString:@"5"]){
+        color = [UIColor customGrayColor];
+    }else if([weekday isEqualToString:@"6"]){
+        color = [UIColor customOrangeColor];
+    }else if([weekday isEqualToString:@"7"]){
+        color = [UIColor customPurpleColor];
+    }
+    
+    return color;
+}
+
 - (void)addTakeNoteButton
 {
-    float circleRadius = 80; // screen width factor ...
+    float circleRadius = 65; // screen width factor ...
     
     self.takeNoteButton = [[UIControl alloc] initWithFrame:CGRectMake(0, 0, circleRadius, circleRadius)];
-    self.takeNoteButton.center = CGPointMake(self.view.center.x, self.view.bounds.size.height - 60);
+    self.takeNoteButton.center = CGPointMake(self.view.center.x, self.view.bounds.size.height - 45);
     self.takeNoteButton.layer.cornerRadius = CGRectGetWidth(self.takeNoteButton.bounds)/2;
-    self.takeNoteButton.backgroundColor = [UIColor customBlueColor];
+    
+    ///// TODO : change according to the weekday ...
+//    NSCalendar* cal = [NSCalendar currentCalendar];
+//    NSDateComponents* comp = [cal components:kCFCalendarUnitWeekday fromDate:[NSDate date]];
+//    return [comp weekday];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init] ;
+    [dateFormatter setDateFormat:@"e"];
+    NSString *weekDay = [dateFormatter stringFromDate:[NSDate date]] ;
+
+//    NSLog(@"%i", intWeekDay);
+    
+    self.takeNoteButton.backgroundColor = [self getColorFromWeekDay:weekDay];
     
     // drop shadow ...
     self.takeNoteButton.layer.shadowColor = [UIColor blackColor].CGColor;
@@ -72,8 +105,87 @@ CGPoint pointNow;
     [self.takeNoteButton addTarget:self action:@selector(takeNoteTap:) forControlEvents:UIControlEventTouchUpInside];
     //    [self.takeNoteButton addTarget:self action:@selector(scaleToDefault:) forControlEvents:UIControlEventTouchDragExit];
     
+    //add icon
+    
+//    UIImageView *writeIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"takenotebutton"]];
+////    float logoMargin = 30;
+//    writeIcon.frame = CGRectMake(0,0 , circleRadius , circleRadius);
+//    
+//    writeIcon.layer.shadowColor = [UIColor blackColor].CGColor;
+//    writeIcon.layer.shadowOffset = CGSizeMake(-2, 2);
+//    writeIcon.layer.shadowOpacity = 0.3;
+//    writeIcon.layer.shadowRadius = 4.0;
+    //    starlogo.center = self.dragView.center;
+//    UILabel * plusLabel = [[UILabel alloc] init];
+//    plusLabel.text = @"+";
+//    [self.takeNoteButton addSubview:plusLabel];
+    
+    
+    
     [self.view insertSubview:self.takeNoteButton aboveSubview:self.noteTableView];
     //    [self.view addSubview:self.draggableCircle];
+}
+
+- (void)hideTakeNoteButton
+{
+//    CGRect screenRect = [[UIScreen mainScreen] bounds];
+//    CGFloat screenHeight = screenRect.size.height;
+    
+    POPBasicAnimation *layerScaleAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
+    layerScaleAnimation.toValue = [NSValue valueWithCGSize:CGSizeMake(0.5f, 0.5f)];
+    [self.takeNoteButton.layer pop_addAnimation:layerScaleAnimation forKey:@"layerScaleAnimation"];
+    
+    POPBasicAnimation *layerPositionAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerPositionY];
+    layerPositionAnimation.toValue = @(self.view.bounds.size.height + 65);
+    [self.takeNoteButton.layer pop_addAnimation:layerPositionAnimation forKey:@"layerPositionAnimation"];
+}
+- (void)showTakeNoteButton
+{
+//    POPBasicAnimation *layerScaleAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
+//    layerScaleAnimation.toValue = [NSValue valueWithCGSize:CGSizeMake(0.5f, 0.5f)];
+//    [self.takeNoteButton.layer pop_addAnimation:layerScaleAnimation forKey:@"layerScaleAnimation"];
+    
+    POPBasicAnimation *layerPositionAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerPositionY];
+    layerPositionAnimation.toValue = @(self.view.bounds.size.height - 45);
+    [self.takeNoteButton.layer pop_addAnimation:layerPositionAnimation forKey:@"layerPositionAnimation"];
+    
+//    self.loginWithFacebookButton.layer.opacity = 1.0;
+//    POPSpringAnimation *layerScaleAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
+//    layerScaleAnimation.springBounciness = 18;
+//    layerScaleAnimation.toValue = [NSValue valueWithCGSize:CGSizeMake(1.f, 1.f)];
+//    [self.loginWithFacebookButton.layer pop_addAnimation:layerScaleAnimation forKey:@"labelScaleAnimation"];
+//    
+//    POPSpringAnimation *layerPositionAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionY];
+//    //    layerPositionAnimation.toValue = @(self.dragView.layer.position.y + self.dragView.intrinsicContentSize.height + 220);
+//    
+//    layerPositionAnimation.toValue = @(self.view.frame.size.height - 75);
+//    
+//    layerPositionAnimation.springBounciness = 12;
+//    [self.loginWithFacebookButton.layer pop_addAnimation:layerPositionAnimation forKey:@"layerPositionAnimation"];
+//    
+//    ///// Show title Label  ///////
+//    self.titleLabel.layer.opacity = 1.0;
+//    POPSpringAnimation *titleLayerScaleAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
+//    titleLayerScaleAnimation.springBounciness = 18;
+//    titleLayerScaleAnimation.toValue = [NSValue valueWithCGSize:CGSizeMake(1.f, 1.f)];
+//    [self.titleLabel.layer pop_addAnimation:titleLayerScaleAnimation forKey:@"titleLabelScaleAnimation"];
+//    
+//    POPSpringAnimation *titleLayerPositionAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionY];
+//    titleLayerPositionAnimation.toValue = @(70);
+//    titleLayerPositionAnimation.springBounciness = 12;
+//    [self.titleLabel.layer pop_addAnimation:titleLayerPositionAnimation forKey:@"titleLayerPositionAnimation"];
+//    
+//    ///// Show logline Label  ///////
+//    self.loglineLabel.layer.opacity = 1.0;
+//    POPSpringAnimation *loglineLayerScaleAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
+//    loglineLayerScaleAnimation.springBounciness = 18;
+//    loglineLayerScaleAnimation.toValue = [NSValue valueWithCGSize:CGSizeMake(1.f, 1.f)];
+//    [self.loglineLabel.layer pop_addAnimation:loglineLayerScaleAnimation forKey:@"loglineLabelScaleAnimation"];
+//    
+//    POPSpringAnimation *loglineLayerPositionAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionY];
+//    loglineLayerPositionAnimation.toValue = @(113);
+//    loglineLayerPositionAnimation.springBounciness = 12;
+//    [self.loglineLabel.layer pop_addAnimation:loglineLayerPositionAnimation forKey:@"loglineLayerPositionAnimation"];
 }
 
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
@@ -86,9 +198,20 @@ CGPoint pointNow;
 //    NSLog(@"content offset= %f",scrollView.contentOffset.y);
     if (scrollView.contentOffset.y < pointNow.y) {
 //        NSLog(@"down");
+        if(isScrollUp == YES){
+            isScrollUp = NO;
+            NSLog(@"down");
+            [self showTakeNoteButton];
+        }
         //push the button up
     } else if (scrollView.contentOffset.y > pointNow.y) {
-//        NSLog(@"up");
+        
+        if(isScrollUp == NO){
+            isScrollUp = YES;
+            NSLog(@"up");
+            [self hideTakeNoteButton];
+            /// take the button down
+        }
         // push the button down
     }
 
@@ -108,8 +231,10 @@ CGPoint pointNow;
 //        [self.noteTableView reloadData];
 //        [self.noteTableView reloadRowsAtIndexPaths:0 withRowAnimation:UITableViewRowAnimationFade];
     }
+    
     [self.noteTableView reloadData];
-
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    [self.noteTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
 //    [self.noteTableView reloadData];
 //    [self performSegueWithIdentifier: @"takenotesegue" sender: self];
 }
@@ -129,16 +254,7 @@ CGPoint pointNow;
     }
     
     [allNoteRecords removeObjectAtIndex:index];
-//
-//    NSString * noteContent = self.noteTextView.text; // change this shit
-//    NSDate * date = [NSDate date];
-//    
-//    NSDictionary * newNote = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:noteContent,date, nil]
-//                                                         forKeys:[NSArray arrayWithObjects:NOTE_CONTENT,NOTE_DATE, nil]];
-//    
-//    //    NSLog(@"new record = %@",newNote);
-//    [allNoteRecords insertObject:newNote atIndex:0];
-//    //    NSLog(@"all note record = %@", allNoteRecords);
+
     [defaults setObject:allNoteRecords forKey:NOTE_LIST_KEY];
 //    // do not forget to save changes
     [defaults synchronize];
@@ -150,22 +266,60 @@ CGPoint pointNow;
     return(YES);
 }
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
+- (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *identifier = @"MyNoteCell";
+    MyNoteCell *cell = (MyNoteCell *)[tableView dequeueReusableCellWithIdentifier:identifier];
+    
+    UITableViewRowAction *shareAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"Share" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath){
+        NSLog(@"Share");
+        // maybe show an action sheet with more options
+//        [self.noteTableView setEditing:NO];
+    }];
+    shareAction.backgroundColor = [UIColor customGreenColor];
+    
+    UITableViewRowAction *editAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"Edit " handler:^(UITableViewRowAction *action, NSIndexPath *indexPath){
+        NSLog(@"Edit");
         
+//        push to another "edit" view
+//        cell.noteTextView.editable = YES;
+//        cell.noteTextView.userInteractionEnabled = YES;
+
+        // maybe show an action sheet with more options
+        //        [self.noteTableView setEditing:NO];
+    }];
+    editAction.backgroundColor = [UIColor customBlueColor];
+    
+    UITableViewRowAction *deleteAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"Delete"  handler:^(UITableViewRowAction *action, NSIndexPath *indexPath){
         NSArray *indexPaths = [NSArray arrayWithObject:indexPath];
         [[self myNotes] removeObjectAtIndex:[indexPath row]];
         [[self noteTableView] deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
         [self deleteNoteAtIndex:[indexPath row]];
-//        [self.noteTableView reloadData];
+        //        [self.noteTableView reloadData];
         NSLog(@"delete at indexPath = %@",indexPath );
-        // Delete the row from the data source
-//        [self.noteTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }
+    }];
+    
+    return @[editAction, shareAction,deleteAction];
+}
+
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //we need this just
+//    if (editingStyle == UITableViewCellEditingStyleDelete) {
+//        
+////        NSArray *indexPaths = [NSArray arrayWithObject:indexPath];
+////        [[self myNotes] removeObjectAtIndex:[indexPath row]];
+////        [[self noteTableView] deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
+////        [self deleteNoteAtIndex:[indexPath row]];
+//////        [self.noteTableView reloadData];
+////        NSLog(@"delete at indexPath = %@",indexPath );
+//        // Delete the row from the data source
+////        [self.noteTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+//    }
+//    else if (editingStyle == UITableViewCellEditingStyleInsert) {
+//        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+//    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -202,30 +356,6 @@ CGPoint pointNow;
         }
     }
 
-//    NSString *note = [[self.myNotes objectAtIndex:indexPath.row] objectForKey:@"noteContent"];
-//    int numLine = cell.noteTextView.contentSize.height/cell.noteTextView.font.lineHeight;
-//    NSLog(@"num line = %i",numLine);
-//    NSLog(@"note size = %f", cell.noteTextView.contentSize.height);
-    
-//    rowHeight = rowHeight* numLine;
-//    rowHeight = [note length]*2.3;
-//    CGRect screenRect = [[UIScreen mainScreen] bounds];
-//    CGFloat screenWidth = screenRect.size.width;
-//    [cell.noteTextView layoutIfNeeded];
-//    [cell.noteTextView sizeThatFits:CGSizeMake(cell.noteTextView.frame.size.width, MAXFLOAT)];
-//    cell.noteTextView.text = note;
-//    NSLog(@"textView height = %f",[cell.noteTextView intrinsicContentSize].height);
-//    CGSize sizeThatFitsTextView = [cell.noteTextView sizeThatFits:cell.noteTextView.frame.size];
-
-//    rowHeight = [cell.noteTextView intrinsicContentSize].height;
-//    CGFloat screenHeight = screenRect.size.height;
-    
-//    CGSize textViewSize = [note bound];
-    //TODO : predict by the length of text ...
-//    PFObject *trendBox = [self.loadedObjects objectAtIndex:indexPath.row];
-//    if ([trendBox[kDDBoxSizeTypeKey] isEqualToString:kDDBoxSizeTypeLarge]) {
-//        rowHeight = 240.f;
-//    }
     return defaultRowHeight;
 }
 
@@ -243,7 +373,7 @@ CGPoint pointNow;
     
     NSDate *noteDate = [[self.myNotes objectAtIndex:indexPath.row] objectForKey:NOTE_DATE];
     NSDateFormatter *formatter=[[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"dd MM YYYY HH:mm:ss"];
+    [formatter setDateFormat:@"dd MM YYYY HH:mm"];
     cell.noteDate.text = [formatter stringFromDate:noteDate];
     
     

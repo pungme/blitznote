@@ -53,33 +53,36 @@ BOOL isSaving = NO;
 }
 
 - (void)saveData {
-    //tryout
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//    defaults set
-//    [defaults setInteger:9001 forKey:@"HighScore"];
     
-    // the mutalbe array of all debts
-    NSMutableArray * allNoteRecords = [[NSMutableArray alloc] init];
-    NSMutableArray * currentNoteRecords = [defaults objectForKey:NOTE_LIST_KEY];
-    
-    if(currentNoteRecords.count > 0){ // if there are any current record ...
-        //do the freaking copy
-        allNoteRecords = [[defaults objectForKey:NOTE_LIST_KEY] mutableCopy];
+    if([self.noteTextView.text length] != 0){
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //    defaults set
+    //    [defaults setInteger:9001 forKey:@"HighScore"];
+        
+        // the mutalbe array of all debts
+        NSMutableArray * allNoteRecords = [[NSMutableArray alloc] init];
+        NSMutableArray * currentNoteRecords = [defaults objectForKey:NOTE_LIST_KEY];
+        
+        if(currentNoteRecords.count > 0){ // if there are any current record ...
+            //do the freaking copy
+            allNoteRecords = [[defaults objectForKey:NOTE_LIST_KEY] mutableCopy];
+        }
+        
+        NSString * noteContent = self.noteTextView.text; // change this shit
+        NSDate * date = [NSDate date];
+        
+        NSDictionary * newNote = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:noteContent,date, nil]
+                                                               forKeys:[NSArray arrayWithObjects:NOTE_CONTENT,NOTE_DATE, nil]];
+        
+    //    NSLog(@"new record = %@",newNote);
+        [allNoteRecords insertObject:newNote atIndex:0];
+    //    NSLog(@"all note record = %@", allNoteRecords);
+        [defaults setObject:allNoteRecords forKey:NOTE_LIST_KEY];
+        // do not forget to save changes
+        [defaults synchronize];
     }
-    
-    NSString * noteContent = self.noteTextView.text; // change this shit
-    NSDate * date = [NSDate date];
-    
-    NSDictionary * newNote = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:noteContent,date, nil]
-                                                           forKeys:[NSArray arrayWithObjects:NOTE_CONTENT,NOTE_DATE, nil]];
-    
-//    NSLog(@"new record = %@",newNote);
-    [allNoteRecords insertObject:newNote atIndex:0];
-//    NSLog(@"all note record = %@", allNoteRecords);
-    [defaults setObject:allNoteRecords forKey:NOTE_LIST_KEY];
-    // do not forget to save changes
-    [defaults synchronize];
     isSaving = NO;
+        
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -88,15 +91,15 @@ BOOL isSaving = NO;
     
     // set background color according to the contentOffset ...
     
-    
+    ///TODO: make it swipe down and reveal the note page
 //    self.view.frame = CGRectMake(self.view.frame.origin.x,
 //                                            - scrollView.contentOffset.y,
 //                                           self.view.frame.size.width,
 //                                           self.view.frame.size.height);
     
-    NSLog(@"contentOffset = %f",scrollView.contentOffset.y);
+//    NSLog(@"contentOffset = %f",scrollView.contentOffset.y);
     CGFloat colorOffset = (scrollView.contentOffset.y) / 350;
-    NSLog(@"color offset = %f",colorOffset);
+//    NSLog(@"color offset = %f",colorOffset);
     self.view.backgroundColor = [UIColor colorWithRed:1.0 + colorOffset green:1.0+colorOffset blue:1.0+colorOffset alpha:1.0];
     
     if (scrollView.contentOffset.y < -100)
@@ -109,14 +112,14 @@ BOOL isSaving = NO;
 //            }
         }];
         
-        if([self.noteTextView.text length] != 0 && isSaving == NO){
+        if(isSaving == NO){
             isSaving = YES;
             [self saveData];
         }
         //check if text is empty.
 //        NSLog(@"content offset y = %f",scrollView.contentOffset.y);
     }else {
-        NSLog(@"normal scroll");
+//        NSLog(@"normal scroll");
     }
 }
 
@@ -131,7 +134,8 @@ BOOL isSaving = NO;
 
 -(void) appEnterBackground:(NSNotification *)notification{
     NSLog(@"app enter background mode ... ");
-//    [self saveData];
+    [self saveData];
+    self.noteTextView.text = @"";
 //    TODO : save data then reset the textView ?
 }
 

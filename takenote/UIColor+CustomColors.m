@@ -12,7 +12,7 @@
 
 + (UIColor *)customGrayColor
 {
-    return [self colorWithRed:84 green:84 blue:84];
+    return [self colorWithRed:149 green:165 blue:166];
 }
 
 + (UIColor *)customRedColor
@@ -35,6 +35,17 @@
 //    return [self colorWithRed:52 green:152 blue:219];
     return [self colorWithRed:88 green:141 blue:236];
 
+}
++ (UIColor *)customPinkColor{
+    return [self colorWithRed:255 green:186 blue:210];
+}
+
++ (UIColor *)customOrangeColor{
+    return [self colorWithRed:243 green:156 blue:18];
+}
+
++ (UIColor *)customPurpleColor{
+    return [self colorWithRed:142 green:68 blue:173];
 }
 
 #pragma mark - Private class methods
