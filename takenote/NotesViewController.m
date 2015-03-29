@@ -7,6 +7,7 @@
 //
 
 #import "NotesViewController.h"
+#import "EditNoteViewController.h"
 #import "UIColor+CustomColors.h"
 #import <pop/POP.h>
 
@@ -260,6 +261,7 @@ CGPoint pointNow;
     UITableViewRowAction *editAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"Edit " handler:^(UITableViewRowAction *action, NSIndexPath *indexPath){
         NSLog(@"Edit");
         ///TODO: we probably need editIndex
+        self.editingRow = indexPath;
         [self performSegueWithIdentifier: @"editnotesegue" sender: self];
         
     }];
@@ -383,6 +385,19 @@ CGPoint pointNow;
     // Dispose of any resources that can be recreated.
 }
 
+/////// segue stuff
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSLog(@"prepareForSegue: %@", segue.identifier);
+    
+    if ([segue.identifier isEqualToString:@"editnotesegue"]) {
+        EditNoteViewController *editNoteViewController = [segue destinationViewController];
+        editNoteViewController.indexPath = self.editingRow;
+//        [editNoteViewController setIndexPath:self.editingRow];
+//        [segue.destinationViewController setHappiness:100];
+    } 
+}
 -(BOOL)prefersStatusBarHidden {
     return YES;
 }

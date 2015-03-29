@@ -16,7 +16,6 @@
 @interface EditNoteViewController ()
 
 @end
-//BOOL isSaving = NO;
 
 @implementation EditNoteViewController
 
@@ -44,6 +43,11 @@
                                                  name: @"didBecomeActive"
                                                object: nil];
     
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //    id theHighScore = [defaults objectForKey:@"listOfAllDebts"];
+    NSMutableArray *allNote = [NSMutableArray arrayWithArray:[defaults objectForKey:NOTE_LIST_KEY]];
+    
+    NSLog(@"text to edit = %@",[allNote objectAtIndex:self.indexPath.row]);
     //    self.view.backgroundColor = [UIColor blueColor];
     // Do any additional setup after loading the view, typically from a nib.
 }
@@ -52,6 +56,11 @@
     self.isSaving = NO;
 //    self loadData
 }
+
+//- (void)setIndexPath:(NSIndexPath*)indexPath{
+//    NSLog(@"Hi");
+////    self.indexPath = indexPath;
+//}
 
 - (void)loadDataAtIndex:(NSInteger)index{
     //// set textView to that data ...

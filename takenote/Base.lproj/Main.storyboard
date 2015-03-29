@@ -5,10 +5,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--First-->
+        <!--TakeNote-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="TakeNoteViewController" sceneMemberID="viewController">
+                <viewController title="TakeNote" id="9pv-A4-QxB" customClass="TakeNoteViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
@@ -104,10 +104,10 @@
             </objects>
             <point key="canvasLocation" x="41" y="135"/>
         </scene>
-        <!--First-->
+        <!--EditNote-->
         <scene sceneID="D86-tD-Jk6">
             <objects>
-                <viewController id="Pfm-Rb-mbL" customClass="EditNoteViewController" sceneMemberID="viewController">
+                <viewController title="EditNote" id="Pfm-Rb-mbL" customClass="EditNoteViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NhB-fm-OMC"/>
                         <viewControllerLayoutGuide type="bottom" id="3l3-0e-fb6"/>

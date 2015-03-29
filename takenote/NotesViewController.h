@@ -13,6 +13,7 @@
 //@property (weak, nonatomic) IBOutlet UITableView *noteTableView;
 @property (nonatomic, strong) NSMutableArray *myNotes;
 @property (nonatomic, strong) NSIndexPath* expandedRow;
+@property (nonatomic, strong) NSIndexPath* editingRow;
 //@property (nonatomic, strong) CircleLineButton *oButton;
 @end
 
