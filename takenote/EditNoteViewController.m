@@ -47,7 +47,7 @@
     //    id theHighScore = [defaults objectForKey:@"listOfAllDebts"];
     NSMutableArray *allNote = [NSMutableArray arrayWithArray:[defaults objectForKey:NOTE_LIST_KEY]];
     self.noteTextView.text = [[allNote objectAtIndex:self.indexPath.row] objectForKey:NOTE_CONTENT];
-    NSLog(@"text to edit = %@",[allNote objectAtIndex:self.indexPath.row]);
+//    NSLog(@"text to edit = %@",[allNote objectAtIndex:self.indexPath.row]);
     //    self.view.backgroundColor = [UIColor blueColor];
     // Do any additional setup after loading the view, typically from a nib.
 }
@@ -69,6 +69,15 @@
 - (void)saveData {
     /// save again at index path ...
     if([self.noteTextView.text length] != 0){
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        //    id theHighScore = [defaults objectForKey:@"listOfAllDebts"];
+        NSMutableArray *allNote = [NSMutableArray arrayWithArray:[defaults objectForKey:NOTE_LIST_KEY]];
+        NSMutableDictionary *note = [[allNote objectAtIndex:self.indexPath.row] mutableCopy];
+        [note setObject:self.noteTextView.text forKey:NOTE_CONTENT];
+        [allNote replaceObjectAtIndex:self.indexPath.row withObject:note];
+//        NSMutableDictionary *note = [allNote objectAtIndex:self.indexPath.row];
+//        NSLog(@"note = %@",note);
+//        allNote objec
 //        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
 //        NSMutableArray * allNoteRecords = [[NSMutableArray alloc] init];
@@ -88,9 +97,9 @@
 //        //    NSLog(@"new record = %@",newNote);
 //        [allNoteRecords insertObject:newNote atIndex:0];
 //        //    NSLog(@"all note record = %@", allNoteRecords);
-//        [defaults setObject:allNoteRecords forKey:NOTE_LIST_KEY];
+        [defaults setObject:allNote forKey:NOTE_LIST_KEY];
 //        // do not forget to save changes
-//        [defaults synchronize];
+        [defaults synchronize];
     }
     self.isSaving = NO;
     
