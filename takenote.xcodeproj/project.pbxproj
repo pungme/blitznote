@@ -19,6 +19,7 @@
 		72217FCF1AC0148100D3F891 /* takenoteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 72217FCE1AC0148100D3F891 /* takenoteTests.m */; };
 		7254C8381AC4C638003C8A42 /* UIColor+CustomColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 7254C8371AC4C638003C8A42 /* UIColor+CustomColors.m */; };
 		7254C83D1AC87556003C8A42 /* takenotbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 7254C83C1AC87556003C8A42 /* takenotbutton.png */; };
+		7254C8431AC88C52003C8A42 /* EditNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7254C8421AC88C52003C8A42 /* EditNoteViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,8 @@
 		7254C8361AC4C638003C8A42 /* UIColor+CustomColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+CustomColors.h"; sourceTree = "<group>"; };
 		7254C8371AC4C638003C8A42 /* UIColor+CustomColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CustomColors.m"; sourceTree = "<group>"; };
 		7254C83C1AC87556003C8A42 /* takenotbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = takenotbutton.png; sourceTree = "<group>"; };
+		7254C8411AC88C52003C8A42 /* EditNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditNoteViewController.h; sourceTree = "<group>"; };
+		7254C8421AC88C52003C8A42 /* EditNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditNoteViewController.m; sourceTree = "<group>"; };
 		A354654FE5B2034FF162EBEB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -122,6 +125,8 @@
 				72217FB41AC0148000D3F891 /* AppDelegate.m */,
 				72217FB61AC0148000D3F891 /* TakeNoteViewController.h */,
 				72217FB71AC0148000D3F891 /* TakeNoteViewController.m */,
+				7254C8411AC88C52003C8A42 /* EditNoteViewController.h */,
+				7254C8421AC88C52003C8A42 /* EditNoteViewController.m */,
 				720712FB1AC0CED800B08E47 /* NotesViewController.h */,
 				720712FC1AC0CED800B08E47 /* NotesViewController.m */,
 				72217FB91AC0148100D3F891 /* SecondViewController.h */,
@@ -316,6 +321,7 @@
 				720712FD1AC0CED800B08E47 /* NotesViewController.m in Sources */,
 				72217FBB1AC0148100D3F891 /* SecondViewController.m in Sources */,
 				72217FB51AC0148000D3F891 /* AppDelegate.m in Sources */,
+				7254C8431AC88C52003C8A42 /* EditNoteViewController.m in Sources */,
 				72217FB81AC0148000D3F891 /* TakeNoteViewController.m in Sources */,
 				72217FB21AC0148000D3F891 /* main.m in Sources */,
 				7254C8381AC4C638003C8A42 /* UIColor+CustomColors.m in Sources */,
@@ -441,8 +447,8 @@
 			baseConfigurationReference = 4197C57DA38EBD955E5B9C86 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				INFOPLIST_FILE = takenote/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -455,7 +461,7 @@
 			baseConfigurationReference = 06DE73F32F81945031822C4B /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				INFOPLIST_FILE = takenote/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

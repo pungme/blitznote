@@ -259,6 +259,8 @@ CGPoint pointNow;
     
     UITableViewRowAction *editAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"Edit " handler:^(UITableViewRowAction *action, NSIndexPath *indexPath){
         NSLog(@"Edit");
+        ///TODO: we probably need editIndex
+        [self performSegueWithIdentifier: @"editnotesegue" sender: self];
         
     }];
     editAction.backgroundColor = [UIColor customBlueColor];
