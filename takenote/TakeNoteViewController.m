@@ -16,7 +16,7 @@
 @interface TakeNoteViewController ()
 
 @end
-BOOL isSaving = NO;
+//BOOL isSaving = NO;
 
 @implementation TakeNoteViewController
 
@@ -49,7 +49,7 @@ BOOL isSaving = NO;
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    isSaving = NO;
+    self.isSaving = NO;
 }
 
 - (void)saveData {
@@ -81,7 +81,7 @@ BOOL isSaving = NO;
         // do not forget to save changes
         [defaults synchronize];
     }
-    isSaving = NO;
+    self.isSaving = NO;
         
 }
 
@@ -112,8 +112,8 @@ BOOL isSaving = NO;
 //            }
         }];
         
-        if(isSaving == NO){
-            isSaving = YES;
+        if(self.isSaving == NO){
+            self.isSaving = YES;
             [self saveData];
         }
         //check if text is empty.
