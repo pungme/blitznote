@@ -46,7 +46,7 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     //    id theHighScore = [defaults objectForKey:@"listOfAllDebts"];
     NSMutableArray *allNote = [NSMutableArray arrayWithArray:[defaults objectForKey:NOTE_LIST_KEY]];
-    
+    self.noteTextView.text = [[allNote objectAtIndex:self.indexPath.row] objectForKey:NOTE_CONTENT];
     NSLog(@"text to edit = %@",[allNote objectAtIndex:self.indexPath.row]);
     //    self.view.backgroundColor = [UIColor blueColor];
     // Do any additional setup after loading the view, typically from a nib.
@@ -68,15 +68,12 @@
 
 - (void)saveData {
     /// save again at index path ...
-//    if([self.noteTextView.text length] != 0){
+    if([self.noteTextView.text length] != 0){
 //        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//        //    defaults set
-//        //    [defaults setInteger:9001 forKey:@"HighScore"];
-//        
-//        // the mutalbe array of all debts
+
 //        NSMutableArray * allNoteRecords = [[NSMutableArray alloc] init];
 //        NSMutableArray * currentNoteRecords = [defaults objectForKey:NOTE_LIST_KEY];
-//        
+//
 //        if(currentNoteRecords.count > 0){ // if there are any current record ...
 //            //do the freaking copy
 //            allNoteRecords = [[defaults objectForKey:NOTE_LIST_KEY] mutableCopy];
@@ -94,7 +91,7 @@
 //        [defaults setObject:allNoteRecords forKey:NOTE_LIST_KEY];
 //        // do not forget to save changes
 //        [defaults synchronize];
-//    }
+    }
     self.isSaving = NO;
     
 }
