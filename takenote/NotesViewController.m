@@ -128,9 +128,6 @@ CGPoint pointNow;
 
 - (void)hideTakeNoteButton
 {
-//    CGRect screenRect = [[UIScreen mainScreen] bounds];
-//    CGFloat screenHeight = screenRect.size.height;
-    
     POPBasicAnimation *layerScaleAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
     layerScaleAnimation.toValue = [NSValue valueWithCGSize:CGSizeMake(0.5f, 0.5f)];
     [self.takeNoteButton.layer pop_addAnimation:layerScaleAnimation forKey:@"layerScaleAnimation"];
@@ -141,51 +138,11 @@ CGPoint pointNow;
 }
 - (void)showTakeNoteButton
 {
-//    POPBasicAnimation *layerScaleAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
-//    layerScaleAnimation.toValue = [NSValue valueWithCGSize:CGSizeMake(0.5f, 0.5f)];
-//    [self.takeNoteButton.layer pop_addAnimation:layerScaleAnimation forKey:@"layerScaleAnimation"];
     
     POPBasicAnimation *layerPositionAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerPositionY];
     layerPositionAnimation.toValue = @(self.view.bounds.size.height - 45);
     [self.takeNoteButton.layer pop_addAnimation:layerPositionAnimation forKey:@"layerPositionAnimation"];
-    
-//    self.loginWithFacebookButton.layer.opacity = 1.0;
-//    POPSpringAnimation *layerScaleAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
-//    layerScaleAnimation.springBounciness = 18;
-//    layerScaleAnimation.toValue = [NSValue valueWithCGSize:CGSizeMake(1.f, 1.f)];
-//    [self.loginWithFacebookButton.layer pop_addAnimation:layerScaleAnimation forKey:@"labelScaleAnimation"];
-//    
-//    POPSpringAnimation *layerPositionAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionY];
-//    //    layerPositionAnimation.toValue = @(self.dragView.layer.position.y + self.dragView.intrinsicContentSize.height + 220);
-//    
-//    layerPositionAnimation.toValue = @(self.view.frame.size.height - 75);
-//    
-//    layerPositionAnimation.springBounciness = 12;
-//    [self.loginWithFacebookButton.layer pop_addAnimation:layerPositionAnimation forKey:@"layerPositionAnimation"];
-//    
-//    ///// Show title Label  ///////
-//    self.titleLabel.layer.opacity = 1.0;
-//    POPSpringAnimation *titleLayerScaleAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
-//    titleLayerScaleAnimation.springBounciness = 18;
-//    titleLayerScaleAnimation.toValue = [NSValue valueWithCGSize:CGSizeMake(1.f, 1.f)];
-//    [self.titleLabel.layer pop_addAnimation:titleLayerScaleAnimation forKey:@"titleLabelScaleAnimation"];
-//    
-//    POPSpringAnimation *titleLayerPositionAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionY];
-//    titleLayerPositionAnimation.toValue = @(70);
-//    titleLayerPositionAnimation.springBounciness = 12;
-//    [self.titleLabel.layer pop_addAnimation:titleLayerPositionAnimation forKey:@"titleLayerPositionAnimation"];
-//    
-//    ///// Show logline Label  ///////
-//    self.loglineLabel.layer.opacity = 1.0;
-//    POPSpringAnimation *loglineLayerScaleAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
-//    loglineLayerScaleAnimation.springBounciness = 18;
-//    loglineLayerScaleAnimation.toValue = [NSValue valueWithCGSize:CGSizeMake(1.f, 1.f)];
-//    [self.loglineLabel.layer pop_addAnimation:loglineLayerScaleAnimation forKey:@"loglineLabelScaleAnimation"];
-//    
-//    POPSpringAnimation *loglineLayerPositionAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionY];
-//    loglineLayerPositionAnimation.toValue = @(113);
-//    loglineLayerPositionAnimation.springBounciness = 12;
-//    [self.loglineLabel.layer pop_addAnimation:loglineLayerPositionAnimation forKey:@"loglineLayerPositionAnimation"];
+
 }
 
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
@@ -266,13 +223,35 @@ CGPoint pointNow;
     return(YES);
 }
 
+-(void)shareNote:(NSString*)note{
+    NSString *textToShare = note;
+//    NSURL *myWebsite = [NSURL URLWithString:@"http://www.onestar.reviews/"];
+    
+    NSArray *objectsToShare = @[textToShare];
+    
+    UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:objectsToShare applicationActivities:nil];
+    
+    NSArray *excludeActivities = @[UIActivityTypeAirDrop,
+                                   UIActivityTypePrint,
+                                   UIActivityTypeSaveToCameraRoll,
+                                   UIActivityTypeAddToReadingList,
+                                   UIActivityTypePostToFlickr,
+                                   UIActivityTypePostToVimeo];
+    
+    activityVC.excludedActivityTypes = excludeActivities;
+    
+    [self presentViewController:activityVC animated:YES completion:nil];
+}
+
 - (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *identifier = @"MyNoteCell";
-    MyNoteCell *cell = (MyNoteCell *)[tableView dequeueReusableCellWithIdentifier:identifier];
+//    static NSString *identifier = @"MyNoteCell";
+//    MyNoteCell *cell = (MyNoteCell *)[tableView dequeueReusableCellWithIdentifier:identifier];
     
     UITableViewRowAction *shareAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"Share" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath){
         NSLog(@"Share");
+        NSString *note = [[self.myNotes objectAtIndex:indexPath.row] objectForKey:@"noteContent"];
+        [self shareNote:note];
         // maybe show an action sheet with more options
 //        [self.noteTableView setEditing:NO];
     }];
@@ -281,12 +260,6 @@ CGPoint pointNow;
     UITableViewRowAction *editAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"Edit " handler:^(UITableViewRowAction *action, NSIndexPath *indexPath){
         NSLog(@"Edit");
         
-//        push to another "edit" view
-//        cell.noteTextView.editable = YES;
-//        cell.noteTextView.userInteractionEnabled = YES;
-
-        // maybe show an action sheet with more options
-        //        [self.noteTableView setEditing:NO];
     }];
     editAction.backgroundColor = [UIColor customBlueColor];
     
@@ -349,7 +322,7 @@ CGPoint pointNow;
 //        _constraintTextViewHeight.constant = CGRectGetHeight(rect)
         
         //// calculate the row height here ?
-        NSLog(@"height of items = %f", CGRectGetHeight(rect));
+//        NSLog(@"height of items = %f", CGRectGetHeight(rect));
         CGFloat newRowHeight = CGRectGetHeight(rect) + 55.f;
         if(newRowHeight>defaultRowHeight){
             return CGRectGetHeight(rect) + 55.f;
@@ -373,7 +346,7 @@ CGPoint pointNow;
     
     NSDate *noteDate = [[self.myNotes objectAtIndex:indexPath.row] objectForKey:NOTE_DATE];
     NSDateFormatter *formatter=[[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"dd MM YYYY HH:mm"];
+    [formatter setDateFormat:@"dd MMM YYYY HH:mm"];
     cell.noteDate.text = [formatter stringFromDate:noteDate];
     
     
