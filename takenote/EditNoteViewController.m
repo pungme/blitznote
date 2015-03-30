@@ -28,6 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.swipeDownLabel.hidden = YES;
     self.noteTextView.delegate = self;
     self.noteTextView.scrollsToTop = YES;
     [self.noteTextView becomeFirstResponder];
@@ -107,22 +108,27 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    //    NSLog(@"content offset = %f", scrollView.contentOffset.y);
+    [UIView transitionWithView:self.swipeDownLabel
+                      duration:0.4
+                       options:UIViewAnimationOptionTransitionCrossDissolve
+                    animations:NULL
+                    completion:NULL];
+    if( scrollView.contentOffset.y < 0){
+        //animate
+        self.swipeDownLabel.hidden = NO;
+    }else{
+        self.swipeDownLabel.hidden = YES;
+    }
+    self.swipeDownLabel.frame = CGRectMake(self.swipeDownLabel.frame.origin.x,
+                                           0 - scrollView.contentOffset.y/2,
+                                           self.swipeDownLabel.frame.size.width,
+                                           self.swipeDownLabel.frame.size.height);
     
-    // set background color according to the contentOffset ...
-    
-    ///TODO: make it swipe down and reveal the note page
-    //    self.view.frame = CGRectMake(self.view.frame.origin.x,
-    //                                            - scrollView.contentOffset.y,
-    //                                           self.view.frame.size.width,
-    //                                           self.view.frame.size.height);
-    
-    //    NSLog(@"contentOffset = %f",scrollView.contentOffset.y);
     CGFloat colorOffset = (scrollView.contentOffset.y) / 350;
     //    NSLog(@"color offset = %f",colorOffset);
     self.view.backgroundColor = [UIColor colorWithRed:1.0 + colorOffset green:1.0+colorOffset blue:1.0+colorOffset alpha:1.0];
     
-    if (scrollView.contentOffset.y < -100)
+    if (scrollView.contentOffset.y < -110)
     {
         NSLog(@"dismiss ...");
         [self dismissViewControllerAnimated:YES completion:^{

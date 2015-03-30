@@ -17,25 +17,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cTM-t1-kwY">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="325"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cTM-t1-kwY">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="374"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="29"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SWIP DOWN TO SAVE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ky-Vq-yMl">
+                                <rect key="frame" x="232" y="10" width="137" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.80000001192092896" green="0.80000001192092896" blue="0.80000001192092896" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="cTM-t1-kwY" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" id="3VN-gC-6Ng"/>
                             <constraint firstAttribute="width" secondItem="cTM-t1-kwY" secondAttribute="width" id="I1J-0z-ojx"/>
                             <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="cTM-t1-kwY" secondAttribute="bottom" constant="226" id="Q9Z-Sv-rcw"/>
+                            <constraint firstAttribute="centerX" secondItem="0Ky-Vq-yMl" secondAttribute="centerX" constant="-0.5" id="UyW-cM-NyF"/>
                             <constraint firstItem="cTM-t1-kwY" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="Zul-x7-Pvg"/>
+                            <constraint firstItem="0Ky-Vq-yMl" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="topMargin" constant="10" id="uFx-zc-KQC"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="noteTextView" destination="cTM-t1-kwY" id="2gg-uz-cfc"/>
+                        <outlet property="swipeDownLabel" destination="0Ky-Vq-yMl" id="aI7-5x-6MQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -116,18 +125,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="emE-Zm-D1X">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="325"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="emE-Zm-D1X">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="374"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="29"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SWIP DOWN TO SAVE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="URu-Gg-cF0">
+                                <rect key="frame" x="232" y="4" width="137" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="URu-Gg-cF0" firstAttribute="bottom" secondItem="NhB-fm-OMC" secondAttribute="bottom" id="50R-tu-Mzu"/>
                             <constraint firstItem="emE-Zm-D1X" firstAttribute="top" secondItem="MIY-XB-zCa" secondAttribute="top" id="BiS-Ir-Mqy"/>
                             <constraint firstItem="emE-Zm-D1X" firstAttribute="leading" secondItem="MIY-XB-zCa" secondAttribute="leading" id="FI3-1k-oDg"/>
+                            <constraint firstAttribute="centerX" secondItem="URu-Gg-cF0" secondAttribute="centerX" constant="-0.5" id="jtc-Vn-b1j"/>
                             <constraint firstAttribute="width" secondItem="emE-Zm-D1X" secondAttribute="width" id="rRp-pG-DNF"/>
                             <constraint firstItem="3l3-0e-fb6" firstAttribute="top" secondItem="emE-Zm-D1X" secondAttribute="bottom" constant="226" id="zIA-0d-Ail"/>
                         </constraints>
@@ -135,6 +152,7 @@
                     <tabBarItem key="tabBarItem" title="First" image="first" id="8w0-DZ-bhw"/>
                     <connections>
                         <outlet property="noteTextView" destination="emE-Zm-D1X" id="m4Z-RZ-bFG"/>
+                        <outlet property="swipeDownLabel" destination="URu-Gg-cF0" id="CmS-lX-aNV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MOZ-hB-nWn" sceneMemberID="firstResponder"/>

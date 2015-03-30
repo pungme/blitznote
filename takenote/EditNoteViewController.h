@@ -12,5 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UITextView *noteTextView;
 @property (nonatomic) BOOL isSaving;
+@property (weak, nonatomic) IBOutlet UILabel *swipeDownLabel;
 @property (nonatomic) NSIndexPath* indexPath;;
 @end

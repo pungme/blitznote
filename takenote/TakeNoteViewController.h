@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *noteTextView;
 @property (nonatomic) BOOL isSaving;
 @property (nonatomic) BOOL isFirstLaunch;
+@property (weak, nonatomic) IBOutlet UILabel *swipeDownLabel;
 
 @end
 
