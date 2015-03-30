@@ -44,6 +44,20 @@
                                                  name: @"didBecomeActive"
                                                object: nil];
     
+    if(![[NSUserDefaults standardUserDefaults] integerForKey:@"firstLaunch"]){
+        _isFirstLaunch = YES;
+    }else{
+        _isFirstLaunch = NO;
+        
+    }
+    
+    if(self.isFirstLaunch){
+//        [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"firstLaunch"];
+//        [[NSUserDefaults standardUserDefaults] synchronize];
+        self.noteTextView.text = @"swipe down to save note";
+        //TODO: user tutorial
+        //        [self showIntroWithCrossDissolve];
+    }
 //    self.view.backgroundColor = [UIColor blueColor];
     // Do any additional setup after loading the view, typically from a nib.
 }
@@ -73,9 +87,19 @@
         
         NSDictionary * newNote = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:noteContent,date, nil]
                                                                forKeys:[NSArray arrayWithObjects:NOTE_CONTENT,NOTE_DATE, nil]];
+        [allNoteRecords insertObject:newNote atIndex:0];
+        if(self.isFirstLaunch){
+            [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"firstLaunch"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            NSDictionary * tutorialNote = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"swipe left to delete/edit/share",date, nil]
+                                                                 forKeys:[NSArray arrayWithObjects:NOTE_CONTENT,NOTE_DATE, nil]];
+            [allNoteRecords addObject:tutorialNote];
+//            self.noteTextView.text = @"swipe down to save note";
+            //TODO: user tutorial
+            //        [self showIntroWithCrossDissolve];
+        }
         
     //    NSLog(@"new record = %@",newNote);
-        [allNoteRecords insertObject:newNote atIndex:0];
     //    NSLog(@"all note record = %@", allNoteRecords);
         [defaults setObject:allNoteRecords forKey:NOTE_LIST_KEY];
         // do not forget to save changes

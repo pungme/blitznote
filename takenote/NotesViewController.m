@@ -186,13 +186,18 @@ CGPoint pointNow;
         isFirstTime = NO;
         [self performSegueWithIdentifier: @"takenotesegue" sender: self];
     }else{
+        [self.noteTableView reloadData];
+        if([self.myNotes count] > 0){
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+            [self.noteTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        }
 //        [self.noteTableView reloadData];
 //        [self.noteTableView reloadRowsAtIndexPaths:0 withRowAnimation:UITableViewRowAnimationFade];
     }
     
-    [self.noteTableView reloadData];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.noteTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+//    [self.noteTableView reloadData];
+//    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+//    [self.noteTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
 //    [self.noteTableView reloadData];
 //    [self performSegueWithIdentifier: @"takenotesegue" sender: self];
 }

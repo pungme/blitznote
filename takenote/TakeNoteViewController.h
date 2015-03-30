@@ -12,5 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextView *noteTextView;
 @property (nonatomic) BOOL isSaving;
+@property (nonatomic) BOOL isFirstLaunch;
+
 @end
 
