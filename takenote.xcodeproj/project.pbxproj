@@ -17,6 +17,7 @@
 		72217FC01AC0148100D3F891 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72217FBF1AC0148100D3F891 /* Images.xcassets */; };
 		72217FC31AC0148100D3F891 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72217FC11AC0148100D3F891 /* LaunchScreen.xib */; };
 		72217FCF1AC0148100D3F891 /* takenoteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 72217FCE1AC0148100D3F891 /* takenoteTests.m */; };
+		7224260D1ACB4538005026F9 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7224260C1ACB4538005026F9 /* SettingsViewController.m */; };
 		7254C8381AC4C638003C8A42 /* UIColor+CustomColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 7254C8371AC4C638003C8A42 /* UIColor+CustomColors.m */; };
 		7254C83D1AC87556003C8A42 /* takenotbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 7254C83C1AC87556003C8A42 /* takenotbutton.png */; };
 		7254C8431AC88C52003C8A42 /* EditNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7254C8421AC88C52003C8A42 /* EditNoteViewController.m */; };
@@ -52,6 +53,8 @@
 		72217FC81AC0148100D3F891 /* takenoteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = takenoteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		72217FCD1AC0148100D3F891 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		72217FCE1AC0148100D3F891 /* takenoteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = takenoteTests.m; sourceTree = "<group>"; };
+		7224260B1ACB4538005026F9 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		7224260C1ACB4538005026F9 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		7254C8361AC4C638003C8A42 /* UIColor+CustomColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+CustomColors.h"; sourceTree = "<group>"; };
 		7254C8371AC4C638003C8A42 /* UIColor+CustomColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CustomColors.m"; sourceTree = "<group>"; };
 		7254C83C1AC87556003C8A42 /* takenotbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = takenotbutton.png; sourceTree = "<group>"; };
@@ -131,6 +134,8 @@
 				720712FC1AC0CED800B08E47 /* NotesViewController.m */,
 				72217FB91AC0148100D3F891 /* SecondViewController.h */,
 				72217FBA1AC0148100D3F891 /* SecondViewController.m */,
+				7224260B1ACB4538005026F9 /* SettingsViewController.h */,
+				7224260C1ACB4538005026F9 /* SettingsViewController.m */,
 				72217FBC1AC0148100D3F891 /* Main.storyboard */,
 				72217FBF1AC0148100D3F891 /* Images.xcassets */,
 				72217FC11AC0148100D3F891 /* LaunchScreen.xib */,
@@ -321,6 +326,7 @@
 				720712FD1AC0CED800B08E47 /* NotesViewController.m in Sources */,
 				72217FBB1AC0148100D3F891 /* SecondViewController.m in Sources */,
 				72217FB51AC0148000D3F891 /* AppDelegate.m in Sources */,
+				7224260D1ACB4538005026F9 /* SettingsViewController.m in Sources */,
 				7254C8431AC88C52003C8A42 /* EditNoteViewController.m in Sources */,
 				72217FB81AC0148000D3F891 /* TakeNoteViewController.m in Sources */,
 				72217FB21AC0148000D3F891 /* main.m in Sources */,

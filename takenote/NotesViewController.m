@@ -78,12 +78,6 @@ CGPoint pointNow;
     return color;
 }
 
--(void)registerToReceivePushNotification {
-    // Register for push notifications
-    UIApplication* application =[UIApplication sharedApplication];
-    [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
-}
-
 - (void)addSettingButton
 {
     float circleRadius = 65; // screen width factor ...
@@ -415,6 +409,10 @@ CGPoint pointNow;
     [self.noteTableView endUpdates];
 }
 
+
+////////////////////////////// NOTIFICATION TRYOUT ///////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+////// Move this shit to settings view //////
 -(void) removeScheduledLocalNotification{
     UIApplication *app = [UIApplication sharedApplication];
     NSArray *eventArray = [app scheduledLocalNotifications];
@@ -451,13 +449,23 @@ CGPoint pointNow;
     }
 }
 
+-(void)registerToReceivePushNotification {
+    // Register for push notifications
+    UIApplication* application =[UIApplication sharedApplication];
+    [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
+}
+
 - (void) settingTap :(id)sender{
     //This is all testing /// to move to another view ...
     //TODO : goes to settings
     [self registerToReceivePushNotification];
     [self removeScheduledLocalNotification];
     [self setUpLocalNotification];
+    
+    [self performSegueWithIdentifier: @"settingsegue" sender: self];
 }
+////////////////////////////// NOTIFICATION TRYOUT ///////////////////////////
+//////////////////////////////////////////////////////////////////////////////
 
 - (void) takeNoteTap :(id)sender{
     [self performSegueWithIdentifier: @"takenotesegue" sender: self];
