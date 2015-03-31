@@ -26,6 +26,7 @@
 
 @interface NotesViewController () <POPAnimationDelegate>
 @property(nonatomic) UIControl *takeNoteButton;
+@property(nonatomic) UIControl *settingButton;
 @property (strong, nonatomic) IBOutlet UITableView *noteTableView;
 
 @end
@@ -48,6 +49,7 @@ CGPoint pointNow;
                                                object: nil];
     
     [self addTakeNoteButton];
+    [self addSettingButton];
     
     [self.noteTableView setShowsVerticalScrollIndicator:NO];
     self.noteTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -76,9 +78,46 @@ CGPoint pointNow;
     return color;
 }
 
+-(void)registerToReceivePushNotification {
+    // Register for push notifications
+    UIApplication* application =[UIApplication sharedApplication];
+    [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
+}
+
+- (void)addSettingButton
+{
+    float circleRadius = 65; // screen width factor ...
+    
+    self.settingButton = [[UIControl alloc] initWithFrame:CGRectMake(0, 0, circleRadius, circleRadius)];
+    self.settingButton.center = CGPointMake(self.view.center.x, 35);
+    self.settingButton.layer.cornerRadius = CGRectGetWidth(self.settingButton.bounds)/2;
+    
+    ///// TODO : change according to the weekday ...
+    //    NSCalendar* cal = [NSCalendar currentCalendar];
+    //    NSDateComponents* comp = [cal components:kCFCalendarUnitWeekday fromDate:[NSDate date]];
+    //    return [comp weekday];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init] ;
+    [dateFormatter setDateFormat:@"e"];
+    NSString *weekDay = [dateFormatter stringFromDate:[NSDate date]] ;
+    
+    //    NSLog(@"%i", intWeekDay);
+    
+    self.settingButton.backgroundColor = [self getColorFromWeekDay:weekDay];
+    
+    // drop shadow ...
+    self.settingButton.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.settingButton.layer.shadowOffset = CGSizeMake(-2, 2);
+    self.settingButton.layer.shadowOpacity = 0.3;
+    self.settingButton.layer.shadowRadius = 6.0;
+
+    [self.settingButton addTarget:self action:@selector(settingTap:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view insertSubview:self.settingButton aboveSubview:self.noteTableView];
+}
+
 - (void)addTakeNoteButton
 {
     float circleRadius = 65; // screen width factor ...
+    
     
     self.takeNoteButton = [[UIControl alloc] initWithFrame:CGRectMake(0, 0, circleRadius, circleRadius)];
     self.takeNoteButton.center = CGPointMake(self.view.center.x, self.view.bounds.size.height - 45);
@@ -374,6 +413,50 @@ CGPoint pointNow;
     self.expandedRow = indexPath;
     [self.noteTableView beginUpdates];
     [self.noteTableView endUpdates];
+}
+
+-(void) removeScheduledLocalNotification{
+    UIApplication *app = [UIApplication sharedApplication];
+    NSArray *eventArray = [app scheduledLocalNotifications];
+    for (int i=0; i<[eventArray count]; i++)
+    {
+        UILocalNotification* oneEvent = [eventArray objectAtIndex:i];
+        NSDictionary *userInfoCurrent = oneEvent.userInfo;
+         [app cancelLocalNotification:oneEvent];
+//        NSString *uid=[NSString stringWithFormat:@"%@",[userInfoCurrent valueForKey:@"uid"]];
+//        if ([uid isEqualToString:uidtodelete])
+//        {
+//            //Cancelling local notification
+//            [app cancelLocalNotification:oneEvent];
+//            break;
+//        }
+    }
+}
+
+- (void) setUpLocalNotification{
+    NSDate *alertTime = [[NSDate date] dateByAddingTimeInterval:10]; // TODO : random the time
+    UIApplication* app = [UIApplication sharedApplication];
+    
+    UILocalNotification* notifyAlarm = [[UILocalNotification alloc] init] ;
+    if (notifyAlarm)
+    {
+        notifyAlarm.fireDate = alertTime;
+        notifyAlarm.timeZone = [NSTimeZone defaultTimeZone];
+//        notifyAlarm.repeatInterval = 0;
+        [notifyAlarm setRepeatInterval:NSCalendarUnitDay];
+//        [notifyAlarm setRepeatInterval:kCFCalendarUnitDay];
+        notifyAlarm.alertBody = @"Test notification"; // random from your note
+        
+        [app scheduleLocalNotification:notifyAlarm];
+    }
+}
+
+- (void) settingTap :(id)sender{
+    //This is all testing /// to move to another view ...
+    //TODO : goes to settings
+    [self registerToReceivePushNotification];
+    [self removeScheduledLocalNotification];
+    [self setUpLocalNotification];
 }
 
 - (void) takeNoteTap :(id)sender{

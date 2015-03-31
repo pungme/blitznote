@@ -149,7 +149,7 @@
 //    NSLog(@"color offset = %f",colorOffset);
     self.view.backgroundColor = [UIColor colorWithRed:1.0 + colorOffset green:1.0+colorOffset blue:1.0+colorOffset alpha:1.0];
     
-    if (scrollView.contentOffset.y < -110)
+    if (scrollView.contentOffset.y < -100)
     {
         NSLog(@"dismiss ...");
         [self dismissViewControllerAnimated:YES completion:^{
