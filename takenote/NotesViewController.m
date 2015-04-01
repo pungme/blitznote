@@ -53,6 +53,7 @@ CGPoint pointNow;
     
     [self.noteTableView setShowsVerticalScrollIndicator:NO];
     self.noteTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+//    self.noteTableView.alwaysBounceVertical = YES;
     //load user defaults data ...
 //    [self addOverlayButton];
 }
@@ -80,10 +81,13 @@ CGPoint pointNow;
 
 - (void)addSettingButton
 {
-    float circleRadius = 65; // screen width factor ...
+    float circleRadius = 30; // screen width factor ...
+    
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat screenWidth = screenRect.size.width;
     
     self.settingButton = [[UIControl alloc] initWithFrame:CGRectMake(0, 0, circleRadius, circleRadius)];
-    self.settingButton.center = CGPointMake(self.view.center.x, 35);
+    self.settingButton.center = CGPointMake(screenWidth - 30, 35);
     self.settingButton.layer.cornerRadius = CGRectGetWidth(self.settingButton.bounds)/2;
     
     ///// TODO : change according to the weekday ...
@@ -103,7 +107,8 @@ CGPoint pointNow;
     self.settingButton.layer.shadowOffset = CGSizeMake(-2, 2);
     self.settingButton.layer.shadowOpacity = 0.3;
     self.settingButton.layer.shadowRadius = 6.0;
-
+    self.settingButton.layer.opacity = 0.5;
+    
     [self.settingButton addTarget:self action:@selector(settingTap:) forControlEvents:UIControlEventTouchUpInside];
     [self.view insertSubview:self.settingButton aboveSubview:self.noteTableView];
 }
@@ -117,10 +122,6 @@ CGPoint pointNow;
     self.takeNoteButton.center = CGPointMake(self.view.center.x, self.view.bounds.size.height - 45);
     self.takeNoteButton.layer.cornerRadius = CGRectGetWidth(self.takeNoteButton.bounds)/2;
     
-    ///// TODO : change according to the weekday ...
-//    NSCalendar* cal = [NSCalendar currentCalendar];
-//    NSDateComponents* comp = [cal components:kCFCalendarUnitWeekday fromDate:[NSDate date]];
-//    return [comp weekday];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init] ;
     [dateFormatter setDateFormat:@"e"];
     NSString *weekDay = [dateFormatter stringFromDate:[NSDate date]] ;
@@ -160,6 +161,25 @@ CGPoint pointNow;
     //    [self.view addSubview:self.draggableCircle];
 }
 
+- (void)hideSettingButton
+{
+    POPBasicAnimation *layerScaleAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
+    layerScaleAnimation.toValue = [NSValue valueWithCGSize:CGSizeMake(0.5f, 0.5f)];
+    [self.settingButton.layer pop_addAnimation:layerScaleAnimation forKey:@"layerScaleAnimation"];
+    
+    POPBasicAnimation *layerPositionAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerPositionX];
+    layerPositionAnimation.toValue = @(self.view.bounds.size.width + 65);
+    [self.settingButton.layer pop_addAnimation:layerPositionAnimation forKey:@"layerPositionAnimation"];
+}
+- (void)showSettingButton
+{
+    
+    POPBasicAnimation *layerPositionAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerPositionX];
+    layerPositionAnimation.toValue = @(self.view.bounds.size.width - 30);
+    [self.settingButton.layer pop_addAnimation:layerPositionAnimation forKey:@"layerPositionAnimation"];
+    
+}
+
 - (void)hideTakeNoteButton
 {
     POPBasicAnimation *layerScaleAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
@@ -183,10 +203,25 @@ CGPoint pointNow;
     pointNow = scrollView.contentOffset;
 }
 
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+//    show the button
+    if (scrollView.contentOffset.y == 0)
+    {
+            [self showSettingButton];
+    }
+
+}
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
+//        self.view.frame = CGRectMake(self.view.frame.origin.x,
+//                                                - scrollView.contentOffset.y,
+//                                               self.view.frame.size.width,
+//                                               self.view.frame.size.height);
+    
       self.takeNoteButton.transform = CGAffineTransformMakeTranslation(0, scrollView.contentOffset.y);
-//    NSLog(@"content offset= %f",scrollView.contentOffset.y);
+      self.settingButton.transform = CGAffineTransformMakeTranslation(0, scrollView.contentOffset.y);
+
     if (scrollView.contentOffset.y < pointNow.y) {
 //        NSLog(@"down");
         if(isScrollUp == YES){
@@ -200,6 +235,7 @@ CGPoint pointNow;
         if(isScrollUp == NO){
             isScrollUp = YES;
             NSLog(@"up");
+            [self hideSettingButton];
             [self hideTakeNoteButton];
             /// take the button down
         }
@@ -320,7 +356,7 @@ CGPoint pointNow;
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //we need this just
+    //we need this just to enable swipe options
 //    if (editingStyle == UITableViewCellEditingStyleDelete) {
 //        
 ////        NSArray *indexPaths = [NSArray arrayWithObject:indexPath];
@@ -413,54 +449,54 @@ CGPoint pointNow;
 ////////////////////////////// NOTIFICATION TRYOUT ///////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 ////// Move this shit to settings view //////
--(void) removeScheduledLocalNotification{
-    UIApplication *app = [UIApplication sharedApplication];
-    NSArray *eventArray = [app scheduledLocalNotifications];
-    for (int i=0; i<[eventArray count]; i++)
-    {
-        UILocalNotification* oneEvent = [eventArray objectAtIndex:i];
-        NSDictionary *userInfoCurrent = oneEvent.userInfo;
-         [app cancelLocalNotification:oneEvent];
-//        NSString *uid=[NSString stringWithFormat:@"%@",[userInfoCurrent valueForKey:@"uid"]];
-//        if ([uid isEqualToString:uidtodelete])
-//        {
-//            //Cancelling local notification
-//            [app cancelLocalNotification:oneEvent];
-//            break;
-//        }
-    }
-}
-
-- (void) setUpLocalNotification{
-    NSDate *alertTime = [[NSDate date] dateByAddingTimeInterval:10]; // TODO : random the time
-    UIApplication* app = [UIApplication sharedApplication];
-    
-    UILocalNotification* notifyAlarm = [[UILocalNotification alloc] init] ;
-    if (notifyAlarm)
-    {
-        notifyAlarm.fireDate = alertTime;
-        notifyAlarm.timeZone = [NSTimeZone defaultTimeZone];
-//        notifyAlarm.repeatInterval = 0;
-        [notifyAlarm setRepeatInterval:NSCalendarUnitDay];
-//        [notifyAlarm setRepeatInterval:kCFCalendarUnitDay];
-        notifyAlarm.alertBody = @"Test notification"; // random from your note
-        
-        [app scheduleLocalNotification:notifyAlarm];
-    }
-}
-
--(void)registerToReceivePushNotification {
-    // Register for push notifications
-    UIApplication* application =[UIApplication sharedApplication];
-    [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
-}
+//-(void) removeScheduledLocalNotification{
+//    UIApplication *app = [UIApplication sharedApplication];
+//    NSArray *eventArray = [app scheduledLocalNotifications];
+//    for (int i=0; i<[eventArray count]; i++)
+//    {
+//        UILocalNotification* oneEvent = [eventArray objectAtIndex:i];
+//        NSDictionary *userInfoCurrent = oneEvent.userInfo;
+//         [app cancelLocalNotification:oneEvent];
+////        NSString *uid=[NSString stringWithFormat:@"%@",[userInfoCurrent valueForKey:@"uid"]];
+////        if ([uid isEqualToString:uidtodelete])
+////        {
+////            //Cancelling local notification
+////            [app cancelLocalNotification:oneEvent];
+////            break;
+////        }
+//    }
+//}
+//
+//- (void) setUpLocalNotification{
+//    NSDate *alertTime = [[NSDate date] dateByAddingTimeInterval:10]; // TODO : random the time
+//    UIApplication* app = [UIApplication sharedApplication];
+//    
+//    UILocalNotification* notifyAlarm = [[UILocalNotification alloc] init] ;
+//    if (notifyAlarm)
+//    {
+//        notifyAlarm.fireDate = alertTime;
+//        notifyAlarm.timeZone = [NSTimeZone defaultTimeZone];
+////        notifyAlarm.repeatInterval = 0;
+//        [notifyAlarm setRepeatInterval:NSCalendarUnitDay];
+////        [notifyAlarm setRepeatInterval:kCFCalendarUnitDay];
+//        notifyAlarm.alertBody = @"Test notification"; // random from your note
+//        
+//        [app scheduleLocalNotification:notifyAlarm];
+//    }
+//}
+//
+//-(void)registerToReceivePushNotification {
+//    // Register for push notifications
+//    UIApplication* application =[UIApplication sharedApplication];
+//    [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
+//}
 
 - (void) settingTap :(id)sender{
     //This is all testing /// to move to another view ...
     //TODO : goes to settings
-    [self registerToReceivePushNotification];
-    [self removeScheduledLocalNotification];
-    [self setUpLocalNotification];
+//    [self registerToReceivePushNotification];
+//    [self removeScheduledLocalNotification];
+//    [self setUpLocalNotification];
     
     [self performSegueWithIdentifier: @"settingsegue" sender: self];
 }

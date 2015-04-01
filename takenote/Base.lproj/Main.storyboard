@@ -117,7 +117,7 @@
         <!--Settings-->
         <scene sceneID="fZE-M2-ft6">
             <objects>
-                <viewController title="Settings" id="ghR-Nc-GdJ" sceneMemberID="viewController">
+                <viewController title="Settings" id="ghR-Nc-GdJ" customClass="SettingsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tUI-fT-icO"/>
                         <viewControllerLayoutGuide type="bottom" id="0Ph-OG-ikp"/>
@@ -125,6 +125,17 @@
                     <view key="view" contentMode="scaleToFill" id="JtM-uL-63g">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6TN-dh-I0k">
+                                <rect key="frame" x="40" y="28" width="102" height="30"/>
+                                <state key="normal" title="noti test">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="notiTestTap:" destination="ghR-Nc-GdJ" eventType="touchUpInside" id="SUy-NY-VVJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>

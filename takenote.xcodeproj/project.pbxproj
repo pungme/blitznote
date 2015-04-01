@@ -12,7 +12,6 @@
 		72217FB21AC0148000D3F891 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 72217FB11AC0148000D3F891 /* main.m */; };
 		72217FB51AC0148000D3F891 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 72217FB41AC0148000D3F891 /* AppDelegate.m */; };
 		72217FB81AC0148000D3F891 /* TakeNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72217FB71AC0148000D3F891 /* TakeNoteViewController.m */; };
-		72217FBB1AC0148100D3F891 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72217FBA1AC0148100D3F891 /* SecondViewController.m */; };
 		72217FBE1AC0148100D3F891 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72217FBC1AC0148100D3F891 /* Main.storyboard */; };
 		72217FC01AC0148100D3F891 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72217FBF1AC0148100D3F891 /* Images.xcassets */; };
 		72217FC31AC0148100D3F891 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72217FC11AC0148100D3F891 /* LaunchScreen.xib */; };
@@ -45,8 +44,6 @@
 		72217FB41AC0148000D3F891 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		72217FB61AC0148000D3F891 /* TakeNoteViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TakeNoteViewController.h; sourceTree = "<group>"; };
 		72217FB71AC0148000D3F891 /* TakeNoteViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TakeNoteViewController.m; sourceTree = "<group>"; };
-		72217FB91AC0148100D3F891 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		72217FBA1AC0148100D3F891 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		72217FBD1AC0148100D3F891 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		72217FBF1AC0148100D3F891 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		72217FC21AC0148100D3F891 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -132,8 +129,6 @@
 				7254C8421AC88C52003C8A42 /* EditNoteViewController.m */,
 				720712FB1AC0CED800B08E47 /* NotesViewController.h */,
 				720712FC1AC0CED800B08E47 /* NotesViewController.m */,
-				72217FB91AC0148100D3F891 /* SecondViewController.h */,
-				72217FBA1AC0148100D3F891 /* SecondViewController.m */,
 				7224260B1ACB4538005026F9 /* SettingsViewController.h */,
 				7224260C1ACB4538005026F9 /* SettingsViewController.m */,
 				72217FBC1AC0148100D3F891 /* Main.storyboard */,
@@ -324,7 +319,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				720712FD1AC0CED800B08E47 /* NotesViewController.m in Sources */,
-				72217FBB1AC0148100D3F891 /* SecondViewController.m in Sources */,
 				72217FB51AC0148000D3F891 /* AppDelegate.m in Sources */,
 				7224260D1ACB4538005026F9 /* SettingsViewController.m in Sources */,
 				7254C8431AC88C52003C8A42 /* EditNoteViewController.m in Sources */,

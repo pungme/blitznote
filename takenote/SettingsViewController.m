@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.layer.cornerRadius = 8.f;
     // Do any additional setup after loading the view.
 }
 
@@ -26,6 +27,54 @@
 
 -(BOOL)prefersStatusBarHidden {
     return YES;
+}
+
+///TODO :
+-(void) removeScheduledLocalNotification{
+    UIApplication *app = [UIApplication sharedApplication];
+    NSArray *eventArray = [app scheduledLocalNotifications];
+    for (int i=0; i<[eventArray count]; i++)
+    {
+        UILocalNotification* oneEvent = [eventArray objectAtIndex:i];
+//        NSDictionary *userInfoCurrent = oneEvent.userInfo;
+        [app cancelLocalNotification:oneEvent];
+        //        NSString *uid=[NSString stringWithFormat:@"%@",[userInfoCurrent valueForKey:@"uid"]];
+        //        if ([uid isEqualToString:uidtodelete])
+        //        {
+        //            //Cancelling local notification
+        //            [app cancelLocalNotification:oneEvent];
+        //            break;
+        //        }
+    }
+}
+
+- (void) setUpLocalNotification{
+    NSDate *alertTime = [[NSDate date] dateByAddingTimeInterval:10]; // TODO : random the time
+    UIApplication* app = [UIApplication sharedApplication];
+    
+    UILocalNotification* notifyAlarm = [[UILocalNotification alloc] init] ;
+    if (notifyAlarm)
+    {
+        notifyAlarm.fireDate = alertTime;
+        notifyAlarm.timeZone = [NSTimeZone defaultTimeZone];
+        //        notifyAlarm.repeatInterval = 0;
+        [notifyAlarm setRepeatInterval:NSCalendarUnitMinute];
+        //        [notifyAlarm setRepeatInterval:kCFCalendarUnitDay];
+        notifyAlarm.alertBody = @"Test notification"; // random from your note
+        
+        [app scheduleLocalNotification:notifyAlarm];
+    }
+}
+
+-(void)registerToReceivePushNotification {
+    // Register for push notifications
+    UIApplication* application =[UIApplication sharedApplication];
+    [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
+}
+- (IBAction)notiTestTap:(id)sender {
+        [self registerToReceivePushNotification];
+        [self removeScheduledLocalNotification];
+        [self setUpLocalNotification];
 }
 
 /*
