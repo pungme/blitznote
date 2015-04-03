@@ -10,4 +10,7 @@
 
 @interface SettingsViewController : UIViewController
 
+@property (nonatomic, strong) NSMutableArray *myNotes;
+@property (weak, nonatomic) IBOutlet UISwitch *randomNotifySwitch;
+
 @end

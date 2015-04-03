@@ -7,6 +7,9 @@
 //
 
 #import "SettingsViewController.h"
+#define NOTE_LIST_KEY @"listOfAllNotes"
+#define NOTE_CONTENT @"noteContent"
+#define NOTE_DATE @"noteDate"
 
 @interface SettingsViewController ()
 
@@ -17,6 +20,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.layer.cornerRadius = 8.f;
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //    id theHighScore = [defaults objectForKey:@"listOfAllDebts"];
+    self.myNotes = [NSMutableArray arrayWithArray:[defaults objectForKey:NOTE_LIST_KEY]];
+    
     // Do any additional setup after loading the view.
 }
 
@@ -49,6 +57,8 @@
 }
 
 - (void) setUpLocalNotification{
+    NSUInteger randomIndex = arc4random() % [self.myNotes count];
+    
     NSDate *alertTime = [[NSDate date] dateByAddingTimeInterval:10]; // TODO : random the time
     UIApplication* app = [UIApplication sharedApplication];
     
@@ -57,11 +67,9 @@
     {
         notifyAlarm.fireDate = alertTime;
         notifyAlarm.timeZone = [NSTimeZone defaultTimeZone];
-        //        notifyAlarm.repeatInterval = 0;
-        [notifyAlarm setRepeatInterval:NSCalendarUnitMinute];
+        [notifyAlarm setRepeatInterval:NSCalendarUnitDay];
         //        [notifyAlarm setRepeatInterval:kCFCalendarUnitDay];
-        notifyAlarm.alertBody = @"Test notification"; // random from your note
-        
+        notifyAlarm.alertBody = [[self.myNotes objectAtIndex:randomIndex] objectForKey:NOTE_CONTENT];
         [app scheduleLocalNotification:notifyAlarm];
     }
 }
@@ -71,10 +79,21 @@
     UIApplication* application =[UIApplication sharedApplication];
     [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
 }
-- (IBAction)notiTestTap:(id)sender {
+- (IBAction)randomNotifySwitchChange:(id)sender {
+    BOOL isOn = [self.randomNotifySwitch isOn];
+    if(isOn == YES){
         [self registerToReceivePushNotification];
         [self removeScheduledLocalNotification];
         [self setUpLocalNotification];
+    }
+//    NSLog(@"hello there");
+//    NSLog(@"switch state = %i",[self.randomNotifySwitch isOn]);
+}
+
+- (IBAction)notiTestTap:(id)sender {
+//        [self registerToReceivePushNotification];
+//        [self removeScheduledLocalNotification];
+//        [self setUpLocalNotification];
 }
 
 /*
