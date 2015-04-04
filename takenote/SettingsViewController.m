@@ -25,6 +25,14 @@
     //    id theHighScore = [defaults objectForKey:@"listOfAllDebts"];
     self.myNotes = [NSMutableArray arrayWithArray:[defaults objectForKey:NOTE_LIST_KEY]];
     
+    if(![[NSUserDefaults standardUserDefaults] integerForKey:@"takenoteOnStart"]){
+        [self.takenoteOnStartSwitch setOn:NO];
+//        [self performSegueWithIdentifier: @"takenotesegue" sender: self];
+    }
+    if(![[NSUserDefaults standardUserDefaults] integerForKey:@"saveOnSleep"]){
+        [self.saveOnSleepSwitch setOn:NO];
+//        [self performSegueWithIdentifier: @"takenotesegue" sender: self];
+    }
     // Do any additional setup after loading the view.
 }
 
@@ -84,15 +92,34 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)randomNotifySwitchChange:(id)sender {
-    BOOL isOn = [self.randomNotifySwitch isOn];
-    if(isOn == YES){
-        [self registerToReceivePushNotification];
-        [self removeScheduledLocalNotification];
-        [self setUpLocalNotification];
+//- (IBAction)randomNotifySwitchChange:(id)sender {
+//    BOOL isOn = [self.randomNotifySwitch isOn];
+//    if(isOn == YES){
+//        [self registerToReceivePushNotification];
+//        [self removeScheduledLocalNotification];
+//        [self setUpLocalNotification];
+//    }
+////    NSLog(@"hello there");
+////    NSLog(@"switch state = %i",[self.randomNotifySwitch isOn]);
+//}
+
+- (IBAction)takenoteWhenStartSwitchTap:(id)sender {
+//    NSLog(@"takenote on start state = %i",[self.takenoteOnStartSwitch isOn]);
+    if([self.takenoteOnStartSwitch isOn]){
+        [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"takenoteOnStart"];
+    }else {
+        [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"takenoteOnStart"];
     }
-//    NSLog(@"hello there");
-//    NSLog(@"switch state = %i",[self.randomNotifySwitch isOn]);
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (IBAction)saveOnDeviceSleepSwitchTap:(id)sender {
+//    NSLog(@"save on sleep state = %i",[self.saveOnSleepSwitch isOn]);
+    if([self.saveOnSleepSwitch isOn]){
+        [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"saveOnSleep"];
+    }else{
+        [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"saveOnSleep"];
+    }
 }
 
 //- (IBAction)notiTestTap:(id)sender {

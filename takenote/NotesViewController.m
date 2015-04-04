@@ -53,6 +53,14 @@ CGPoint pointNow;
     
     [self.noteTableView setShowsVerticalScrollIndicator:NO];
     self.noteTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    if([[NSUserDefaults standardUserDefaults] objectForKey:@"takenoteOnStart"] == nil) {
+        [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"takenoteOnStart"];
+    }
+    
+    if([[NSUserDefaults standardUserDefaults] objectForKey:@"saveOnSleep"] == nil) {
+        [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"saveOnSleep"];
+    }
+
 //    self.noteTableView.alwaysBounceVertical = YES;
     //load user defaults data ...
 //    [self addOverlayButton];
@@ -163,9 +171,9 @@ CGPoint pointNow;
 
 - (void)hideSettingButton
 {
-    POPBasicAnimation *layerScaleAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
-    layerScaleAnimation.toValue = [NSValue valueWithCGSize:CGSizeMake(0.5f, 0.5f)];
-    [self.settingButton.layer pop_addAnimation:layerScaleAnimation forKey:@"layerScaleAnimation"];
+//    POPBasicAnimation *layerScaleAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
+//    layerScaleAnimation.toValue = [NSValue valueWithCGSize:CGSizeMake(0.5f, 0.5f)];
+//    [self.settingButton.layer pop_addAnimation:layerScaleAnimation forKey:@"layerScaleAnimation"];
     
     POPBasicAnimation *layerPositionAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerPositionX];
     layerPositionAnimation.toValue = @(self.view.bounds.size.width + 65);
@@ -253,7 +261,12 @@ CGPoint pointNow;
     
     if(isFirstTime == YES){
         isFirstTime = NO;
-        [self performSegueWithIdentifier: @"takenotesegue" sender: self];
+        if([[NSUserDefaults standardUserDefaults] integerForKey:@"takenoteOnStart"] == 1){
+            [self performSegueWithIdentifier: @"takenotesegue" sender: self];
+        }else{
+            [self.noteTableView reloadData];
+        }
+//        [self performSegueWithIdentifier: @"takenotesegue" sender: self];
     }else{
         [self.noteTableView reloadData];
         if([self.myNotes count] > 0){
@@ -509,7 +522,10 @@ CGPoint pointNow;
 
 -(void) appBecomeActive: (NSNotification *)noification{
     NSLog(@"app become active again ...");
-    [self performSegueWithIdentifier: @"takenotesegue" sender: self];
+    NSLog(@"take note on start = %li",(long)[[NSUserDefaults standardUserDefaults] integerForKey:@"takenoteOnStart"]);
+    if([[NSUserDefaults standardUserDefaults] integerForKey:@"takenoteOnStart"] == 1){
+        [self performSegueWithIdentifier: @"takenotesegue" sender: self];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

@@ -143,9 +143,15 @@
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Ku-iW-ft1">
                                 <rect key="frame" x="529" y="35" width="51" height="31"/>
+                                <connections>
+                                    <action selector="takenoteWhenStartSwitchTap:" destination="ghR-Nc-GdJ" eventType="valueChanged" id="oR9-0g-dpu"/>
+                                </connections>
                             </switch>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ufR-aA-69J">
                                 <rect key="frame" x="529" y="75" width="51" height="31"/>
+                                <connections>
+                                    <action selector="saveOnDeviceSleepSwitchTap:" destination="ghR-Nc-GdJ" eventType="valueChanged" id="hF3-se-7gB"/>
+                                </connections>
                             </switch>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sN7-iP-Ow4">
                                 <rect key="frame" x="268" y="551" width="64" height="41"/>
@@ -174,6 +180,10 @@
                             <constraint firstItem="ufR-aA-69J" firstAttribute="top" secondItem="0Ku-iW-ft1" secondAttribute="bottom" constant="9" id="qeK-2y-9AM"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="saveOnSleepSwitch" destination="ufR-aA-69J" id="HvC-Y6-End"/>
+                        <outlet property="takenoteOnStartSwitch" destination="0Ku-iW-ft1" id="W3h-lM-vUs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9rR-xr-4GW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

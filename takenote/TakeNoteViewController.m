@@ -52,9 +52,9 @@
                                                object: nil];
     
     if(![[NSUserDefaults standardUserDefaults] integerForKey:@"firstLaunch"]){
-        _isFirstLaunch = YES;
+        self.isFirstLaunch = YES;
     }else{
-        _isFirstLaunch = NO;
+        self.isFirstLaunch = NO;
         
     }
     
@@ -181,8 +181,10 @@
 
 -(void) appEnterBackground:(NSNotification *)notification{
     NSLog(@"app enter background mode ... ");
-    [self saveData];
-    self.noteTextView.text = @"";
+    if([[NSUserDefaults standardUserDefaults] integerForKey:@"saveOnSleep"]){
+        [self saveData];
+        self.noteTextView.text = @"";
+    }
 //    TODO : save data then reset the textView ?
 }
 
