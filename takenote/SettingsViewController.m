@@ -79,6 +79,11 @@
     UIApplication* application =[UIApplication sharedApplication];
     [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
 }
+
+- (IBAction)doneButtonTap:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (IBAction)randomNotifySwitchChange:(id)sender {
     BOOL isOn = [self.randomNotifySwitch isOn];
     if(isOn == YES){
@@ -90,11 +95,11 @@
 //    NSLog(@"switch state = %i",[self.randomNotifySwitch isOn]);
 }
 
-- (IBAction)notiTestTap:(id)sender {
-//        [self registerToReceivePushNotification];
-//        [self removeScheduledLocalNotification];
-//        [self setUpLocalNotification];
-}
+//- (IBAction)notiTestTap:(id)sender {
+////        [self registerToReceivePushNotification];
+////        [self removeScheduledLocalNotification];
+////        [self setUpLocalNotification];
+//}
 
 /*
 #pragma mark - Navigation
