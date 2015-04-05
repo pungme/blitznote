@@ -100,7 +100,10 @@
             [[NSUserDefaults standardUserDefaults] synchronize];
             NSDictionary * tutorialNote = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"swipe left to delete/edit/share",date, nil]
                                                                  forKeys:[NSArray arrayWithObjects:NOTE_CONTENT,NOTE_DATE, nil]];
+            NSDictionary * tutorialNote2 = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"Tap on the note itself to expand and see more content",date, nil]
+                                                                      forKeys:[NSArray arrayWithObjects:NOTE_CONTENT,NOTE_DATE, nil]];
             [allNoteRecords addObject:tutorialNote];
+            [allNoteRecords addObject:tutorialNote2];
 //            self.noteTextView.text = @"swipe down to save note";
             //TODO: user tutorial
             //        [self showIntroWithCrossDissolve];
