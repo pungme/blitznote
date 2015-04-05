@@ -108,14 +108,25 @@ CGPoint pointNow;
     
     //    NSLog(@"%i", intWeekDay);
     
-    self.settingButton.backgroundColor = [self getColorFromWeekDay:weekDay];
+//    self.settingButton.backgroundColor = [self getColorFromWeekDay:weekDay];
     
     // drop shadow ...
     self.settingButton.layer.shadowColor = [UIColor blackColor].CGColor;
     self.settingButton.layer.shadowOffset = CGSizeMake(-2, 2);
     self.settingButton.layer.shadowOpacity = 0.3;
     self.settingButton.layer.shadowRadius = 6.0;
-    self.settingButton.layer.opacity = 0.5;
+    self.settingButton.layer.opacity = 0.4;
+    
+    
+    UIImageView *gearsIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"settings"]];
+    gearsIcon.frame = CGRectMake(0,0 , circleRadius , circleRadius );
+    
+    gearsIcon.layer.shadowColor = [UIColor blackColor].CGColor;
+    gearsIcon.layer.shadowOffset = CGSizeMake(-2, 2);
+    gearsIcon.layer.shadowOpacity = 0.3;
+    gearsIcon.layer.shadowRadius = 4.0;
+    //    starlogo.center = self.dragView.center;
+    [self.settingButton addSubview:gearsIcon];
     
     [self.settingButton addTarget:self action:@selector(settingTap:) forControlEvents:UIControlEventTouchUpInside];
     [self.view insertSubview:self.settingButton aboveSubview:self.noteTableView];
@@ -136,6 +147,7 @@ CGPoint pointNow;
 
 //    NSLog(@"%i", intWeekDay);
     
+    
     self.takeNoteButton.backgroundColor = [self getColorFromWeekDay:weekDay];
     
     // drop shadow ...
@@ -145,6 +157,13 @@ CGPoint pointNow;
     self.takeNoteButton.layer.shadowRadius = 6.0;
     // [self.dragView addTarget:self action:@selector(touchDown:) forControlEvents:UIControlEventTouchDown];
     //    [self.draggableCircle addGestureRecognizer:recognizer];
+    
+    UIImageView *gearsIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"takenote3"]];
+    gearsIcon.frame = CGRectMake(15,15 , circleRadius-30 , circleRadius-30 );
+
+    gearsIcon.layer.opacity = 0.5;
+    [self.takeNoteButton addSubview:gearsIcon];
+    
     [self.takeNoteButton addTarget:self action:@selector(takeNoteTap:) forControlEvents:UIControlEventTouchUpInside];
     //    [self.takeNoteButton addTarget:self action:@selector(scaleToDefault:) forControlEvents:UIControlEventTouchDragExit];
     
@@ -333,6 +352,7 @@ CGPoint pointNow;
 
 - (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    [self hideSettingButton];
 //    static NSString *identifier = @"MyNoteCell";
 //    MyNoteCell *cell = (MyNoteCell *)[tableView dequeueReusableCellWithIdentifier:identifier];
     

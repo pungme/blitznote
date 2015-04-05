@@ -18,8 +18,11 @@
 		72217FCF1AC0148100D3F891 /* takenoteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 72217FCE1AC0148100D3F891 /* takenoteTests.m */; };
 		7224260D1ACB4538005026F9 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7224260C1ACB4538005026F9 /* SettingsViewController.m */; };
 		7254C8381AC4C638003C8A42 /* UIColor+CustomColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 7254C8371AC4C638003C8A42 /* UIColor+CustomColors.m */; };
-		7254C83D1AC87556003C8A42 /* takenotbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 7254C83C1AC87556003C8A42 /* takenotbutton.png */; };
 		7254C8431AC88C52003C8A42 /* EditNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7254C8421AC88C52003C8A42 /* EditNoteViewController.m */; };
+		7257E5231AD1E8EE00CEE2A3 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 7257E5221AD1E8EE00CEE2A3 /* settings.png */; };
+		7257E5251AD1EB1000CEE2A3 /* takenote.png in Resources */ = {isa = PBXBuildFile; fileRef = 7257E5241AD1EB1000CEE2A3 /* takenote.png */; };
+		7257E5271AD1EC0500CEE2A3 /* takenote2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7257E5261AD1EC0500CEE2A3 /* takenote2.png */; };
+		7257E52B1AD1EC9A00CEE2A3 /* takenote3.png in Resources */ = {isa = PBXBuildFile; fileRef = 7257E52A1AD1EC9A00CEE2A3 /* takenote3.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,9 +57,12 @@
 		7224260C1ACB4538005026F9 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		7254C8361AC4C638003C8A42 /* UIColor+CustomColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+CustomColors.h"; sourceTree = "<group>"; };
 		7254C8371AC4C638003C8A42 /* UIColor+CustomColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CustomColors.m"; sourceTree = "<group>"; };
-		7254C83C1AC87556003C8A42 /* takenotbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = takenotbutton.png; sourceTree = "<group>"; };
 		7254C8411AC88C52003C8A42 /* EditNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditNoteViewController.h; sourceTree = "<group>"; };
 		7254C8421AC88C52003C8A42 /* EditNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditNoteViewController.m; sourceTree = "<group>"; };
+		7257E5221AD1E8EE00CEE2A3 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		7257E5241AD1EB1000CEE2A3 /* takenote.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = takenote.png; sourceTree = "<group>"; };
+		7257E5261AD1EC0500CEE2A3 /* takenote2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = takenote2.png; sourceTree = "<group>"; };
+		7257E52A1AD1EC9A00CEE2A3 /* takenote3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = takenote3.png; sourceTree = "<group>"; };
 		A354654FE5B2034FF162EBEB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -177,7 +183,10 @@
 		7254C83A1AC8742C003C8A42 /* asset */ = {
 			isa = PBXGroup;
 			children = (
-				7254C83C1AC87556003C8A42 /* takenotbutton.png */,
+				7257E5241AD1EB1000CEE2A3 /* takenote.png */,
+				7257E5221AD1E8EE00CEE2A3 /* settings.png */,
+				7257E52A1AD1EC9A00CEE2A3 /* takenote3.png */,
+				7257E5261AD1EC0500CEE2A3 /* takenote2.png */,
 			);
 			name = asset;
 			sourceTree = "<group>";
@@ -265,9 +274,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				72217FBE1AC0148100D3F891 /* Main.storyboard in Resources */,
+				7257E5231AD1E8EE00CEE2A3 /* settings.png in Resources */,
 				72217FC31AC0148100D3F891 /* LaunchScreen.xib in Resources */,
-				7254C83D1AC87556003C8A42 /* takenotbutton.png in Resources */,
+				7257E5251AD1EB1000CEE2A3 /* takenote.png in Resources */,
 				72217FC01AC0148100D3F891 /* Images.xcassets in Resources */,
+				7257E52B1AD1EC9A00CEE2A3 /* takenote3.png in Resources */,
+				7257E5271AD1EC0500CEE2A3 /* takenote2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
