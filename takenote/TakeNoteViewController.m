@@ -61,7 +61,7 @@
     if(self.isFirstLaunch){
 //        [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"firstLaunch"];
 //        [[NSUserDefaults standardUserDefaults] synchronize];
-        self.noteTextView.text = @"swipe down to save note";
+        self.noteTextView.text = @"swipe down to save note or just put the device to sleep to save note";
         //TODO: user tutorial
         //        [self showIntroWithCrossDissolve];
     }
