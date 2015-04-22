@@ -99,12 +99,18 @@
             [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"firstLaunch"];
             [[NSUserDefaults standardUserDefaults] synchronize];
             NSDictionary * tutorialNote = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"swipe left to delete/edit/share",date, nil]
-                                                                 forKeys:[NSArray arrayWithObjects:NOTE_CONTENT,NOTE_DATE, nil]];
-            NSDictionary * tutorialNote2 = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"Tap on the note itself to expand and see more content",date, nil]
                                                                       forKeys:[NSArray arrayWithObjects:NOTE_CONTENT,NOTE_DATE, nil]];
-            
+            NSDictionary * tutorialNote2 = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"Tap on the note itself to expand and see more content",date, nil]
+                                                                       forKeys:[NSArray arrayWithObjects:NOTE_CONTENT,NOTE_DATE, nil]];
+            NSDictionary * tutorialNote3 = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"The note are save automaticcaly when you put the device on sleep",date, nil]
+                                                                       forKeys:[NSArray arrayWithObjects:NOTE_CONTENT,NOTE_DATE, nil]];
+            NSDictionary * tutorialNote4 = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"Request & suggestion, direct it to @pungme (twitter)",date, nil]
+                                                                       forKeys:[NSArray arrayWithObjects:NOTE_CONTENT,NOTE_DATE, nil]];
+            ///n The note are save automaticcaly when you put the device on sleep /n request & suggestion, direct it to @pungme (twitter)
             [allNoteRecords addObject:tutorialNote];
             [allNoteRecords addObject:tutorialNote2];
+            [allNoteRecords addObject:tutorialNote3];
+            [allNoteRecords addObject:tutorialNote4];
 //            self.noteTextView.text = @"swipe down to save note";
             //TODO: user tutorial
             //        [self showIntroWithCrossDissolve];
