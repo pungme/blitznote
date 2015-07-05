@@ -167,6 +167,7 @@
 //            if([self.noteTextView.text length] != 0){
 //                [self saveData];
 //            }
+            //TODO : use delegate patterns
         }];
         
         if(self.isSaving == NO){
