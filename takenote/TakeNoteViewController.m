@@ -122,8 +122,8 @@
         // do not forget to save changes
         [defaults synchronize];
     }
-    self.isSaving = NO;
-        
+//    self.isSaving = NO;
+    
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
