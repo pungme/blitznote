@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 //#import "CircleLineButton.h"
 
-@interface NotesViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
+@interface NotesViewController : UIViewController <UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate,UISearchDisplayDelegate>
 //@property (weak, nonatomic) IBOutlet UITableView *noteTableView;
 @property (nonatomic, strong) NSMutableArray *myNotes;
 @property (nonatomic, strong) NSIndexPath* expandedRow;
 @property (nonatomic, strong) NSIndexPath* editingRow;
+@property (nonatomic) UISearchBar *searchBar;
 //@property (nonatomic, strong) CircleLineButton *oButton;
 @end
 

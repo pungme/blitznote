@@ -39,6 +39,9 @@ CGPoint pointNow;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    CGFloat screenWidth = [[UIScreen mainScreen] bounds].size.width;
+    
     self.view.layer.cornerRadius = 8.f;
     self.noteTableView.layer.cornerRadius = 8.f;
 //    self.oButton = [CircleLineButton buttonWithType:UIButtonTypeRoundedRect];
@@ -64,6 +67,34 @@ CGPoint pointNow;
 //    self.noteTableView.alwaysBounceVertical = YES;
     //load user defaults data ...
 //    [self addOverlayButton];
+
+//    _searchBar = [[UISearchBar alloc] init];
+//    UISearchDisplayController *searchController = [[UISearchDisplayController alloc] initWithSearchBar:_searchBar contentsController:self];
+//    searchController.delegate = self;
+//    searchController.searchResultsDataSource = self;
+//    self.noteTableView.tableHeaderView = _searchBar;
+//    self.noteTableView.contentOffset = CGPointMake(0, CGRectGetHeight(_searchBar.frame));
+    
+    _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 51)];
+    _searchBar.delegate = self;
+    _searchBar.backgroundImage = [[UIImage alloc] init];
+    _searchBar.barTintColor = [UIColor clearColor];
+    _searchBar.placeholder = @"Search notes";
+    
+    _searchBar.layer.shadowColor = [UIColor blackColor].CGColor;
+    _searchBar.layer.shadowOffset = CGSizeMake(-1, 1);
+    _searchBar.layer.shadowOpacity = 0.2;
+    _searchBar.layer.shadowRadius = 4.0;
+//    _searchBar.layer.opacity = 0.4;
+    
+    self.noteTableView.tableHeaderView = _searchBar;
+    self.noteTableView.contentOffset = CGPointMake(0, CGRectGetHeight(_searchBar.frame));
+    
+//    [self addTakeNoteButton];
+//    [self addSettingButton];
+    
+//    [self.view addSubview:_searchBar];
+    
 }
 
 - (UIColor*)getColorFromWeekDay:(NSString*)weekday{
@@ -95,16 +126,16 @@ CGPoint pointNow;
     CGFloat screenWidth = screenRect.size.width;
     
     self.settingButton = [[UIControl alloc] initWithFrame:CGRectMake(0, 0, circleRadius, circleRadius)];
-    self.settingButton.center = CGPointMake(screenWidth - 30, 35);
+    self.settingButton.center = CGPointMake(screenWidth - 30, 65);
     self.settingButton.layer.cornerRadius = CGRectGetWidth(self.settingButton.bounds)/2;
     
     ///// TODO : change according to the weekday ...
     //    NSCalendar* cal = [NSCalendar currentCalendar];
     //    NSDateComponents* comp = [cal components:kCFCalendarUnitWeekday fromDate:[NSDate date]];
     //    return [comp weekday];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init] ;
-    [dateFormatter setDateFormat:@"e"];
-    NSString *weekDay = [dateFormatter stringFromDate:[NSDate date]] ;
+//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init] ;
+//    [dateFormatter setDateFormat:@"e"];
+//    NSString *weekDay = [dateFormatter stringFromDate:[NSDate date]] ;
     
     //    NSLog(@"%i", intWeekDay);
     
@@ -472,6 +503,7 @@ CGPoint pointNow;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"Detail Disclosure Tapped");
+    [self.searchBar resignFirstResponder]; // resign searchbar
     // Set expanded cell then tell tableView to redraw with animation
     self.expandedRow = indexPath;
     [self.noteTableView beginUpdates];
@@ -565,6 +597,53 @@ CGPoint pointNow;
 //        [editNoteViewController setIndexPath:self.editingRow];
 //        [segue.destinationViewController setHappiness:100];
     } 
+}
+
+#pragma mark SearchBarDelegate
+-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+    
+    //here we filter in table View
+//    NSLog(@"myNotes = %@", self.myNotes);
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSMutableArray *allNotes = [NSMutableArray arrayWithArray:[defaults objectForKey:NOTE_LIST_KEY]];
+    NSMutableArray *filteredNotes = [[NSMutableArray alloc] init];
+    //filter from all Notes
+    [filteredNotes removeAllObjects];
+    if(searchText.length == 0){
+        self.myNotes = allNotes;
+//        [self.noteTableView reloadData];
+    }else{
+        //user type something
+        for(id note in allNotes){
+            NSString *noteContent = note[NOTE_CONTENT];
+            if([[noteContent lowercaseString] containsString:[searchText lowercaseString]]){
+//                NSLog(@"noteContent = %@", No)
+                [filteredNotes addObject:note];
+            }
+//            NSLog(@"noteContent = %@", noteContent);
+        }
+        NSLog(@"search results = %@",filteredNotes);
+        self.myNotes = filteredNotes;
+    }
+    [self.noteTableView reloadData];
+//    self.myNotes = [NSMutableArray arrayWithArray:[defaults objectForKey:NOTE_LIST_KEY]];
+    
+//    PFQuery *query = [PFUser query];
+//    [query whereKey:@"displayName_lowercase" containsString:[searchBar.text lowercaseString]];
+//    [query findObjectsInBackgroundWithBlock:^(NSArray *users, NSError *error) {
+//        if (!error) {
+//            //            NSLog(@"%@", users);
+//            self.userList = [NSMutableArray arrayWithArray:users];
+//            [self.userResultsTableView reloadData];
+//        } else {
+//            NSLog(@"Error fetching users");
+//        }
+//    }];
+}
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    [searchBar resignFirstResponder];
 }
 -(BOOL)prefersStatusBarHidden {
     return YES;
