@@ -486,6 +486,7 @@ CGPoint pointNow;
     cell.noteTextView.userInteractionEnabled =NO;
     [cell.noteTextView setDataDetectorTypes:UIDataDetectorTypeAll];
     cell.noteTextView.text = [[self.myNotes objectAtIndex:indexPath.row] objectForKey:@"noteContent"];
+    cell.noteTextView.textColor = [UIColor blackColor];
     
     NSDate *noteDate = [[self.myNotes objectAtIndex:indexPath.row] objectForKey:NOTE_DATE];
     NSDateFormatter *formatter=[[NSDateFormatter alloc] init];
