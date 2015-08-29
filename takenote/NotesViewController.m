@@ -484,6 +484,7 @@ CGPoint pointNow;
     }
     
     cell.noteTextView.userInteractionEnabled =NO;
+    [cell.noteTextView setDataDetectorTypes:UIDataDetectorTypeAll];
     cell.noteTextView.text = [[self.myNotes objectAtIndex:indexPath.row] objectForKey:@"noteContent"];
     
     NSDate *noteDate = [[self.myNotes objectAtIndex:indexPath.row] objectForKey:NOTE_DATE];
@@ -501,7 +502,14 @@ CGPoint pointNow;
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
+    MyNoteCell *cell = (MyNoteCell *)[tableView cellForRowAtIndexPath:indexPath];
+    cell.noteTextView.userInteractionEnabled = NO;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+     MyNoteCell *cell = (MyNoteCell *)[tableView cellForRowAtIndexPath:indexPath];
+    cell.noteTextView.userInteractionEnabled = YES;
     NSLog(@"Detail Disclosure Tapped");
     [self.searchBar resignFirstResponder]; // resign searchbar
     // Set expanded cell then tell tableView to redraw with animation
