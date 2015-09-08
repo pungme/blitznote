@@ -384,6 +384,10 @@ CGPoint pointNow;
 - (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [self hideSettingButton];
+    
+    MyNoteCell *cell = (MyNoteCell *)[tableView cellForRowAtIndexPath:indexPath];
+    cell.noteTextView.userInteractionEnabled = NO;
+    
 //    static NSString *identifier = @"MyNoteCell";
 //    MyNoteCell *cell = (MyNoteCell *)[tableView dequeueReusableCellWithIdentifier:identifier];
     
@@ -506,6 +510,7 @@ CGPoint pointNow;
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
     MyNoteCell *cell = (MyNoteCell *)[tableView cellForRowAtIndexPath:indexPath];
     cell.noteTextView.userInteractionEnabled = NO;
+//    cell.noteTextView.selectable = NO;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
