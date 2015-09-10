@@ -13,5 +13,6 @@
 @property (nonatomic, strong) NSMutableArray *myNotes;
 @property (weak, nonatomic) IBOutlet UISwitch *takenoteOnStartSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *saveOnSleepSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *randomlyNotifyNoteSwitch;
 
 @end

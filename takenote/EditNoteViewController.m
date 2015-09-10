@@ -19,12 +19,6 @@
 
 @implementation EditNoteViewController
 
-//- (void)viewDi
-
-//- (void)viewDidAppear:(BOOL)animated{
-//    self.noteTextView.text = @"";
-//}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     

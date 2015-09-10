@@ -129,7 +129,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Save when put device on sleep" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W5Z-xy-uFu">
                                 <rect key="frame" x="16" y="81" width="210" height="19"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="16"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Ku-iW-ft1">
@@ -161,9 +161,21 @@
                                     <constraint firstAttribute="width" constant="198" id="4QK-cY-d2z"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="16"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Randomly notify notes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6xt-wU-iOK">
+                                <rect key="frame" x="16" y="123" width="147" height="19"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="16"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mqf-Jl-Eqn">
+                                <rect key="frame" x="529" y="117" width="51" height="31"/>
+                                <connections>
+                                    <action selector="randomlyNotifyNotes:" destination="ghR-Nc-GdJ" eventType="valueChanged" id="8tt-o0-Irh"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -174,13 +186,18 @@
                             <constraint firstItem="ufR-aA-69J" firstAttribute="leading" secondItem="0Ku-iW-ft1" secondAttribute="leading" id="BK8-Py-PaL"/>
                             <constraint firstItem="W5Z-xy-uFu" firstAttribute="top" secondItem="KBx-vV-oxY" secondAttribute="bottom" id="GGq-WZ-3EA"/>
                             <constraint firstItem="KBx-vV-oxY" firstAttribute="leading" secondItem="JtM-uL-63g" secondAttribute="leadingMargin" id="GJi-iE-LvK"/>
+                            <constraint firstItem="6xt-wU-iOK" firstAttribute="leading" secondItem="W5Z-xy-uFu" secondAttribute="leading" id="Jqp-8z-O5I"/>
+                            <constraint firstItem="Mqf-Jl-Eqn" firstAttribute="top" secondItem="ufR-aA-69J" secondAttribute="bottom" constant="11" id="KuU-AY-EHi"/>
+                            <constraint firstItem="6xt-wU-iOK" firstAttribute="top" secondItem="W5Z-xy-uFu" secondAttribute="bottom" constant="23" id="LUD-6F-fcp"/>
                             <constraint firstItem="0Ph-OG-ikp" firstAttribute="top" secondItem="sN7-iP-Ow4" secondAttribute="bottom" constant="8" id="PBj-C3-Ok2"/>
                             <constraint firstItem="KBx-vV-oxY" firstAttribute="centerY" secondItem="0Ku-iW-ft1" secondAttribute="centerY" id="grQ-DG-6lV"/>
                             <constraint firstItem="0Ku-iW-ft1" firstAttribute="top" secondItem="tUI-fT-icO" secondAttribute="bottom" constant="15" id="kQo-5e-0se"/>
+                            <constraint firstItem="Mqf-Jl-Eqn" firstAttribute="leading" secondItem="ufR-aA-69J" secondAttribute="leading" id="myE-Pt-XZQ"/>
                             <constraint firstItem="ufR-aA-69J" firstAttribute="top" secondItem="0Ku-iW-ft1" secondAttribute="bottom" constant="9" id="qeK-2y-9AM"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="randomlyNotifyNoteSwitch" destination="Mqf-Jl-Eqn" id="biA-hK-dyT"/>
                         <outlet property="saveOnSleepSwitch" destination="ufR-aA-69J" id="HvC-Y6-End"/>
                         <outlet property="takenoteOnStartSwitch" destination="0Ku-iW-ft1" id="W3h-lM-vUs"/>
                     </connections>

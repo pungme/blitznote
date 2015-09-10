@@ -33,7 +33,11 @@
         [self.saveOnSleepSwitch setOn:NO];
 //        [self performSegueWithIdentifier: @"takenotesegue" sender: self];
     }
-    // Do any additional setup after loading the view.
+    
+    if(![[NSUserDefaults standardUserDefaults] integerForKey:@"randomlyNotifyNote"]){
+        [self.randomlyNotifyNoteSwitch setOn:NO];
+        //        [self performSegueWithIdentifier: @"takenotesegue" sender: self];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -120,6 +124,18 @@
     }else{
         [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"saveOnSleep"];
     }
+}
+
+- (IBAction)randomlyNotifyNotes:(id)sender {
+    if([self.randomlyNotifyNoteSwitch isOn]){
+        [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"randomlyNotifyNote"];
+                [self registerToReceivePushNotification];
+                [self removeScheduledLocalNotification];
+                [self setUpLocalNotification];
+    }else{
+        [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"randomlyNotifyNote"];
+    }
+    //TODO: randomly notify notes within the note that you took, default as false
 }
 
 //- (IBAction)notiTestTap:(id)sender {
