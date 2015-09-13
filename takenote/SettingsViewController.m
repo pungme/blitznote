@@ -29,6 +29,7 @@
         [self.takenoteOnStartSwitch setOn:NO];
 //        [self performSegueWithIdentifier: @"takenotesegue" sender: self];
     }
+    
     if(![[NSUserDefaults standardUserDefaults] integerForKey:@"saveOnSleep"]){
         [self.saveOnSleepSwitch setOn:NO];
 //        [self performSegueWithIdentifier: @"takenotesegue" sender: self];
@@ -50,47 +51,47 @@
 }
 
 ///TODO :
--(void) removeScheduledLocalNotification{
-    UIApplication *app = [UIApplication sharedApplication];
-    NSArray *eventArray = [app scheduledLocalNotifications];
-    for (int i=0; i<[eventArray count]; i++)
-    {
-        UILocalNotification* oneEvent = [eventArray objectAtIndex:i];
-//        NSDictionary *userInfoCurrent = oneEvent.userInfo;
-        [app cancelLocalNotification:oneEvent];
-        //        NSString *uid=[NSString stringWithFormat:@"%@",[userInfoCurrent valueForKey:@"uid"]];
-        //        if ([uid isEqualToString:uidtodelete])
-        //        {
-        //            //Cancelling local notification
-        //            [app cancelLocalNotification:oneEvent];
-        //            break;
-        //        }
-    }
-}
+//-(void) removeScheduledLocalNotification{
+//    UIApplication *app = [UIApplication sharedApplication];
+//    NSArray *eventArray = [app scheduledLocalNotifications];
+//    for (int i=0; i<[eventArray count]; i++)
+//    {
+//        UILocalNotification* oneEvent = [eventArray objectAtIndex:i];
+////        NSDictionary *userInfoCurrent = oneEvent.userInfo;
+//        [app cancelLocalNotification:oneEvent];
+//        //        NSString *uid=[NSString stringWithFormat:@"%@",[userInfoCurrent valueForKey:@"uid"]];
+//        //        if ([uid isEqualToString:uidtodelete])
+//        //        {
+//        //            //Cancelling local notification
+//        //            [app cancelLocalNotification:oneEvent];
+//        //            break;
+//        //        }
+//    }
+//}
+//
+//- (void) setUpLocalNotification{
+//    NSUInteger randomIndex = arc4random() % [self.myNotes count];
+//    
+//    NSDate *alertTime = [[NSDate date] dateByAddingTimeInterval:10]; // TODO : random the time
+//    UIApplication* app = [UIApplication sharedApplication];
+//    
+//    UILocalNotification* notifyAlarm = [[UILocalNotification alloc] init] ;
+//    if (notifyAlarm)
+//    {
+//        notifyAlarm.fireDate = alertTime;
+//        notifyAlarm.timeZone = [NSTimeZone defaultTimeZone];
+//        [notifyAlarm setRepeatInterval:NSCalendarUnitDay];
+//        //        [notifyAlarm setRepeatInterval:kCFCalendarUnitDay];
+//        notifyAlarm.alertBody = [[self.myNotes objectAtIndex:randomIndex] objectForKey:NOTE_CONTENT];
+//        [app scheduleLocalNotification:notifyAlarm];
+//    }
+//}
 
-- (void) setUpLocalNotification{
-    NSUInteger randomIndex = arc4random() % [self.myNotes count];
-    
-    NSDate *alertTime = [[NSDate date] dateByAddingTimeInterval:10]; // TODO : random the time
-    UIApplication* app = [UIApplication sharedApplication];
-    
-    UILocalNotification* notifyAlarm = [[UILocalNotification alloc] init] ;
-    if (notifyAlarm)
-    {
-        notifyAlarm.fireDate = alertTime;
-        notifyAlarm.timeZone = [NSTimeZone defaultTimeZone];
-        [notifyAlarm setRepeatInterval:NSCalendarUnitDay];
-        //        [notifyAlarm setRepeatInterval:kCFCalendarUnitDay];
-        notifyAlarm.alertBody = [[self.myNotes objectAtIndex:randomIndex] objectForKey:NOTE_CONTENT];
-        [app scheduleLocalNotification:notifyAlarm];
-    }
-}
-
--(void)registerToReceivePushNotification {
-    // Register for push notifications
-    UIApplication* application =[UIApplication sharedApplication];
-    [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
-}
+//-(void)registerToReceivePushNotification {
+//    // Register for push notifications
+//    UIApplication* application =[UIApplication sharedApplication];
+//    [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
+//}
 
 - (IBAction)doneButtonTap:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -127,14 +128,14 @@
 }
 
 - (IBAction)randomlyNotifyNotes:(id)sender {
-    if([self.randomlyNotifyNoteSwitch isOn]){
-        [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"randomlyNotifyNote"];
-                [self registerToReceivePushNotification];
-                [self removeScheduledLocalNotification];
-                [self setUpLocalNotification];
-    }else{
-        [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"randomlyNotifyNote"];
-    }
+//    if([self.randomlyNotifyNoteSwitch isOn]){
+//        [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"randomlyNotifyNote"];
+//        [self registerToReceivePushNotification];
+//        [self removeScheduledLocalNotification];
+//        [self setUpLocalNotification];
+//    }else{
+//        [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"randomlyNotifyNote"];
+//    }
     //TODO: randomly notify notes within the note that you took, default as false
 }
 

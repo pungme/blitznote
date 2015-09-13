@@ -496,7 +496,7 @@ CGPoint pointNow;
     NSDateFormatter *formatter=[[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"dd MMM YYYY HH:mm"];
     cell.noteDate.text = [formatter stringFromDate:noteDate];
-    
+//    cell.noteDate.hidden = YES;
     
     UIView *bgColorView = [[UIView alloc] init];
     bgColorView.backgroundColor = [UIColor colorWithRed:0.97 green:0.97 blue:0.97 alpha:1.0];

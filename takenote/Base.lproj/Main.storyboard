@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="oJI-5s-K9g">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="15A282a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="oJI-5s-K9g">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -19,6 +19,7 @@
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cTM-t1-kwY">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="374"/>
+                                <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="29"/>
@@ -26,11 +27,13 @@
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SWIP DOWN TO SAVE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ky-Vq-yMl">
                                 <rect key="frame" x="232" y="10" width="137" height="16"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.80000001192092896" green="0.80000001192092896" blue="0.80000001192092896" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="cTM-t1-kwY" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" id="3VN-gC-6Ng"/>
@@ -58,6 +61,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="179" sectionHeaderHeight="22" sectionFooterHeight="22" id="zTn-Mt-CFf">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MyNoteCell" rowHeight="168" id="Xo4-h7-GXS" customClass="MyNoteCell">
@@ -66,31 +70,35 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <textView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Cd-rP-7aR">
-                                            <rect key="frame" x="8" y="8" width="584" height="152"/>
+                                            <rect key="frame" x="8" y="8" width="584" height="123"/>
+                                            <animations/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="27"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12/12/2015" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="66a-NI-hf4">
-                                            <rect key="frame" x="15" y="138" width="140" height="21"/>
+                                            <rect key="frame" x="13" y="138" width="140" height="21"/>
+                                            <animations/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="140" id="3g1-0B-hbR"/>
-                                                <constraint firstAttribute="height" constant="21" id="jux-J0-ACO"/>
+                                                <constraint firstAttribute="width" constant="140" id="aGs-wm-hKh"/>
+                                                <constraint firstAttribute="height" constant="21" id="dKX-Nt-vi3"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="13"/>
                                             <color key="textColor" red="0.70196080207824707" green="0.70196080207824707" blue="0.70196080207824707" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <animations/>
                                     <constraints>
-                                        <constraint firstAttribute="centerY" secondItem="1Cd-rP-7aR" secondAttribute="centerY" id="1PW-US-XFQ"/>
+                                        <constraint firstAttribute="centerY" secondItem="1Cd-rP-7aR" secondAttribute="centerY" constant="14.5" id="1PW-US-XFQ"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="66a-NI-hf4" secondAttribute="bottom" constant="0.5" id="KjH-l2-0xG"/>
                                         <constraint firstItem="1Cd-rP-7aR" firstAttribute="trailing" secondItem="XPh-lt-yyI" secondAttribute="trailingMargin" id="PTT-Xi-wUm"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="66a-NI-hf4" secondAttribute="bottom" constant="0.5" id="WiO-uR-bLu"/>
-                                        <constraint firstItem="66a-NI-hf4" firstAttribute="leading" secondItem="1Cd-rP-7aR" secondAttribute="leading" constant="7" id="XSI-g0-1O1"/>
+                                        <constraint firstItem="66a-NI-hf4" firstAttribute="leading" secondItem="XPh-lt-yyI" secondAttribute="leadingMargin" constant="5" id="n5s-Sb-ltS"/>
                                         <constraint firstItem="1Cd-rP-7aR" firstAttribute="top" secondItem="XPh-lt-yyI" secondAttribute="topMargin" id="tui-Td-PGd"/>
                                         <constraint firstItem="1Cd-rP-7aR" firstAttribute="leading" secondItem="XPh-lt-yyI" secondAttribute="leadingMargin" id="yAv-Mf-Wyf"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <animations/>
                                 <connections>
                                     <outlet property="noteDate" destination="66a-NI-hf4" id="iuk-co-beD"/>
                                     <outlet property="noteTextView" destination="1Cd-rP-7aR" id="KJy-L3-a8o"/>
@@ -128,24 +136,28 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Save when put device on sleep" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W5Z-xy-uFu">
                                 <rect key="frame" x="16" y="81" width="210" height="19"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="16"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Ku-iW-ft1">
                                 <rect key="frame" x="529" y="35" width="51" height="31"/>
+                                <animations/>
                                 <connections>
                                     <action selector="takenoteWhenStartSwitchTap:" destination="ghR-Nc-GdJ" eventType="valueChanged" id="oR9-0g-dpu"/>
                                 </connections>
                             </switch>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ufR-aA-69J">
                                 <rect key="frame" x="529" y="75" width="51" height="31"/>
+                                <animations/>
                                 <connections>
                                     <action selector="saveOnDeviceSleepSwitchTap:" destination="ghR-Nc-GdJ" eventType="valueChanged" id="hF3-se-7gB"/>
                                 </connections>
                             </switch>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sN7-iP-Ow4">
                                 <rect key="frame" x="268" y="551" width="64" height="41"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="24"/>
                                 <state key="normal" title="DONE">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -157,6 +169,7 @@
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Take note when app start" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KBx-vV-oxY">
                                 <rect key="frame" x="16" y="20" width="198" height="61"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="198" id="4QK-cY-d2z"/>
                                 </constraints>
@@ -164,19 +177,22 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Randomly notify notes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6xt-wU-iOK">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Randomly notify notes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6xt-wU-iOK">
                                 <rect key="frame" x="16" y="123" width="147" height="19"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="16"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mqf-Jl-Eqn">
+                            <switch hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mqf-Jl-Eqn">
                                 <rect key="frame" x="529" y="117" width="51" height="31"/>
+                                <animations/>
                                 <connections>
                                     <action selector="randomlyNotifyNotes:" destination="ghR-Nc-GdJ" eventType="valueChanged" id="8tt-o0-Irh"/>
                                 </connections>
                             </switch>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="sN7-iP-Ow4" secondAttribute="centerX" id="0tR-Xr-Okb"/>
@@ -220,6 +236,7 @@
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="emE-Zm-D1X">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="374"/>
+                                <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="29"/>
@@ -227,11 +244,13 @@
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SWIP DOWN TO SAVE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="URu-Gg-cF0">
                                 <rect key="frame" x="232" y="4" width="137" height="16"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="URu-Gg-cF0" firstAttribute="bottom" secondItem="NhB-fm-OMC" secondAttribute="bottom" id="50R-tu-Mzu"/>
