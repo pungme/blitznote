@@ -469,9 +469,9 @@ CGPoint pointNow;
         
         //// calculate the row height here ?
 //        NSLog(@"height of items = %f", CGRectGetHeight(rect));
-        CGFloat newRowHeight = CGRectGetHeight(rect) + 55.f;
+        CGFloat newRowHeight = CGRectGetHeight(rect) + 75.f;
         if(newRowHeight>defaultRowHeight){
-            return CGRectGetHeight(rect) + 55.f;
+            return CGRectGetHeight(rect) + 75.f;
         }
     }
 
