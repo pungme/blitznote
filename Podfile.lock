@@ -1,15 +1,18 @@
 PODS:
+  - NSDate+TimeAgo (1.0.3)
   - pop (1.0.7)
   - SDWebImage (3.7.2):
     - SDWebImage/Core (= 3.7.2)
   - SDWebImage/Core (3.7.2)
 
 DEPENDENCIES:
+  - NSDate+TimeAgo
   - pop
   - SDWebImage (~> 3.7)
 
 SPEC CHECKSUMS:
-  pop: 2f14a1ea61339767af9e66741b418c831b3844df
+  NSDate+TimeAgo: 416f55d2696d3744c313091c5a9280d47f8238fe
+  pop: 628ffc631644601567ee8bfaaaea493ebd7d0923
   SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.38.2
