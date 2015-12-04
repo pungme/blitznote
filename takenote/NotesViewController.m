@@ -240,9 +240,9 @@ CGPoint pointNow;
 
 - (void)hideTakeNoteButton
 {
-    POPBasicAnimation *layerScaleAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
-    layerScaleAnimation.toValue = [NSValue valueWithCGSize:CGSizeMake(0.5f, 0.5f)];
-    [self.takeNoteButton.layer pop_addAnimation:layerScaleAnimation forKey:@"layerScaleAnimation"];
+//    POPBasicAnimation *layerScaleAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
+//    layerScaleAnimation.toValue = [NSValue valueWithCGSize:CGSizeMake(0.5f, 0.5f)];
+//    [self.takeNoteButton.layer pop_addAnimation:layerScaleAnimation forKey:@"layerScaleAnimation"];
     
     POPBasicAnimation *layerPositionAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerPositionY];
     layerPositionAnimation.toValue = @(self.view.bounds.size.height + 65);
