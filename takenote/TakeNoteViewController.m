@@ -104,7 +104,7 @@
                                                                        forKeys:[NSArray arrayWithObjects:NOTE_CONTENT,NOTE_DATE, nil]];
             NSDictionary * tutorialNote3 = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"The note are save automaticcaly when you put the device on sleep",date, nil]
                                                                        forKeys:[NSArray arrayWithObjects:NOTE_CONTENT,NOTE_DATE, nil]];
-            NSDictionary * tutorialNote4 = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"Request & suggestion, direct it to @pungme (twitter)",date, nil]
+            NSDictionary * tutorialNote4 = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"Request & suggestion, direct it to @pungme (twitter). See the code : https://github.com/pungme/blitznote/",date, nil]
                                                                        forKeys:[NSArray arrayWithObjects:NOTE_CONTENT,NOTE_DATE, nil]];
             ///n The note are save automaticcaly when you put the device on sleep /n request & suggestion, direct it to @pungme (twitter)
             [allNoteRecords addObject:tutorialNote];
