@@ -47,6 +47,10 @@ CGPoint pointNow;
 //    self.oButton = [CircleLineButton buttonWithType:UIButtonTypeRoundedRect];
     self.isComeFromShortcut = NO;
     
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //    id theHighScore = [defaults objectForKey:@"listOfAllDebts"];
+    self.myNotes = [NSMutableArray arrayWithArray:[defaults objectForKey:NOTE_LIST_KEY]];
+    
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(appBecomeActive:)
                                                  name: @"didBecomeActive"
@@ -317,7 +321,7 @@ CGPoint pointNow;
     
     //tryout
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//    id theHighScore = [defaults objectForKey:@"listOfAllDebts"];
+////    id theHighScore = [defaults objectForKey:@"listOfAllDebts"];
     self.myNotes = [NSMutableArray arrayWithArray:[defaults objectForKey:NOTE_LIST_KEY]];
     
     if(isFirstTime == YES){
