@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSIndexPath* expandedRow;
 @property (nonatomic, strong) NSIndexPath* editingRow;
 @property (nonatomic) UISearchBar *searchBar;
+@property (nonatomic) BOOL isComeFromShortcut;
 //@property (nonatomic, strong) CircleLineButton *oButton;
 @end
 

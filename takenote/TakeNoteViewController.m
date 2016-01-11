@@ -51,6 +51,11 @@
                                                  name: @"didBecomeActive"
                                                object: nil];
     
+//    [[NSNotificationCenter defaultCenter] addObserver: self
+//                                             selector: @selector(appComesFromShortcutItem:)
+//                                                 name: @"didComeFromShortcutItem"
+//                                               object: nil];
+    
     if(![[NSUserDefaults standardUserDefaults] integerForKey:@"firstLaunch"]){
         self.isFirstLaunch = YES;
     }else{
@@ -196,8 +201,13 @@
         [self saveData];
         self.noteTextView.text = @"";
     }
+    [self dismissViewControllerAnimated:NO completion:nil];
 //    TODO : save data then reset the textView ?
 }
+
+//-(void)appComesFromShortcutItem: (NSNotification *)noification{
+////    [self dismissViewControllerAnimated:NO completion:nil];
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

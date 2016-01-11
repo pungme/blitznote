@@ -45,10 +45,21 @@ CGPoint pointNow;
     self.view.layer.cornerRadius = 8.f;
     self.noteTableView.layer.cornerRadius = 8.f;
 //    self.oButton = [CircleLineButton buttonWithType:UIButtonTypeRoundedRect];
+    self.isComeFromShortcut = NO;
     
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(appBecomeActive:)
                                                  name: @"didBecomeActive"
+                                               object: nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(appComesFromShortcutItem:)
+                                                 name: @"didComeFromShortcutItem"
+                                               object: nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(appEnterBackground:)
+                                                 name: @"didEnterBackground"
                                                object: nil];
     
     [self addTakeNoteButton];
@@ -590,9 +601,26 @@ CGPoint pointNow;
 -(void) appBecomeActive: (NSNotification *)noification{
     NSLog(@"app become active again ...");
     NSLog(@"take note on start = %li",(long)[[NSUserDefaults standardUserDefaults] integerForKey:@"takenoteOnStart"]);
+    
+    if(_isComeFromShortcut == YES){return;}
+    
     if([[NSUserDefaults standardUserDefaults] integerForKey:@"takenoteOnStart"] == 1){
         [self performSegueWithIdentifier: @"takenotesegue" sender: self];
     }
+}
+
+-(void)appComesFromShortcutItem: (NSNotification *)noification{
+    // random note and show it.
+    _isComeFromShortcut = YES;
+    
+    NSUInteger randomIndex = arc4random() % [self.myNotes count];
+    NSIndexPath *path = [NSIndexPath indexPathForRow:randomIndex inSection:0];
+    NSLog(@"path = %@",path);
+    self.editingRow = path;
+    [self performSegueWithIdentifier: @"editnotesegue" sender: self];
+//    [[self.myNotes objectAtIndex:randomIndex] objectForKey:NOTE_CONTENT];
+    //TODO: we should check what kind of shortcut but in this case, we only have one ...
+    NSLog(@"did comes from shortcut item");
 }
 
 - (void)didReceiveMemoryWarning {
@@ -657,6 +685,12 @@ CGPoint pointNow;
 //        }
 //    }];
 }
+
+-(void) appEnterBackground:(NSNotification *)notification{
+    NSLog(@"app enter background mode ... ");
+    _isComeFromShortcut = NO; // reset the shit
+}
+
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     [searchBar resignFirstResponder];
 }
