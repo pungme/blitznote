@@ -66,6 +66,11 @@ CGPoint pointNow;
                                                object: nil];
     
     [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(appComesFromWidget:)
+                                                 name: @"didComeFromWidget"
+                                               object: nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(appEnterBackground:)
                                                  name: @"didEnterBackground"
                                                object: nil];
@@ -637,8 +642,11 @@ CGPoint pointNow;
         [self performSegueWithIdentifier: @"takenotesegue" sender: self];
     }
 }
+- (void)appComesFromWidget:(id)sender{
+    _isComeFromShortcut = YES;
+}
 
--(void)appComesFromShortcutItem: (NSNotification *)noification{
+- (void)appComesFromShortcutItem: (NSNotification *)noification{
     // random note and show it.
     _isComeFromShortcut = YES;
     

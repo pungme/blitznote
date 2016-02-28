@@ -75,16 +75,22 @@
     // If there's no update required, use NCUpdateResultNoData
     // If there's an update, use NCUpdateResultNewData
 
-//    NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc]initWithSuiteName:@"group.blitznote.TodayExtensionSharingDefaults"];
-//    
-//    //    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//    self.myNotes = [NSMutableArray arrayWithArray:[sharedDefaults objectForKey:NOTE_LIST_KEY]];
-//    [self.pinNoteTableView reloadData];
+    NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc]initWithSuiteName:@"group.blitznote.TodayExtensionSharingDefaults"];
+    
+    //    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    self.myNotes = [NSMutableArray arrayWithArray:[sharedDefaults objectForKey:NOTE_LIST_KEY]];
+    [self.pinNoteTableView reloadData];
     
     completionHandler(NCUpdateResultNewData);
 }
 
 #pragma mark UITableViewDelegate
+
+- (void) tableView: (UITableView *) tableView didSelectRowAtIndexPath: (NSIndexPath *) indexPath {
+    NSURL *pjURL = [NSURL URLWithString:@"blitznote://home"];
+    [self.extensionContext openURL:pjURL completionHandler:nil];
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {

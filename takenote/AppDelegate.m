@@ -18,6 +18,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
 
+    NSDictionary *payload = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey];
+    
+    NSLog(@"payload %@" , payload);
+    
     return YES;
 }
 
@@ -40,6 +44,8 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"didBecomeActive" object:nil];
+    
+    
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 
@@ -51,6 +57,21 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"didComeFromShortcutItem" object:shortcutItem];
     NSLog(@"shortcutItemType = %@", shortcutItem.type);
 }
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+
+    if([[url absoluteString] isEqualToString:@"blitznote://home"]){
+        // show the home instead of the takenote
+            NSLog(@"url = %@",url );
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"didComeFromWidget" object:nil];
+    }
+//    NSDictionary *payload = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey];
+    return YES;
+}
+
 
 //- (void) applicationd
 @end
