@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TodayViewController : UIViewController
+@interface TodayViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
 
+@property (nonatomic, strong) NSMutableArray *myNotes;
+@property (nonatomic, strong) UITableView* pinNoteTableView;
 @end

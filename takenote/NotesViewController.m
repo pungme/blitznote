@@ -51,6 +51,10 @@ CGPoint pointNow;
     //    id theHighScore = [defaults objectForKey:@"listOfAllDebts"];
     self.myNotes = [NSMutableArray arrayWithArray:[defaults objectForKey:NOTE_LIST_KEY]];
     
+    NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc]initWithSuiteName:@"group.blitznote.TodayExtensionSharingDefaults"];
+    [sharedDefaults setObject:[defaults objectForKey:NOTE_LIST_KEY] forKey:NOTE_LIST_KEY];
+    [sharedDefaults synchronize];
+    
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(appBecomeActive:)
                                                  name: @"didBecomeActive"
@@ -347,6 +351,12 @@ CGPoint pointNow;
 //    [self.noteTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
 //    [self.noteTableView reloadData];
 //    [self performSegueWithIdentifier: @"takenotesegue" sender: self];
+    
+    
+    // for widgets
+    NSUserDefaults *sharedDefaults = [[NSUserDefaults alloc]initWithSuiteName:@"group.blitznote.TodayExtensionSharingDefaults"];
+    [sharedDefaults setObject: self.myNotes forKey:NOTE_LIST_KEY];
+    [sharedDefaults synchronize];
 }
 
 
@@ -443,7 +453,12 @@ CGPoint pointNow;
     }];
     
     pinAction.backgroundColor = [UIColor customGrayColor];
-    return @[pinAction,editAction, shareAction,deleteAction];
+    // not yet
+    
+    
+    return @[
+//             pinAction,
+             editAction, shareAction,deleteAction];
 }
 
 
