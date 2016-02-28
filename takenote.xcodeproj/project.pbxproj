@@ -63,6 +63,7 @@
 		7257E5241AD1EB1000CEE2A3 /* takenote.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = takenote.png; sourceTree = "<group>"; };
 		7257E5261AD1EC0500CEE2A3 /* takenote2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = takenote2.png; sourceTree = "<group>"; };
 		7257E52A1AD1EC9A00CEE2A3 /* takenote3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = takenote3.png; sourceTree = "<group>"; };
+		726FD89E1C67E4B600C2C5C0 /* takenote.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = takenote.entitlements; sourceTree = "<group>"; };
 		A354654FE5B2034FF162EBEB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -126,6 +127,7 @@
 		72217FAE1AC0148000D3F891 /* takenote */ = {
 			isa = PBXGroup;
 			children = (
+				726FD89E1C67E4B600C2C5C0 /* takenote.entitlements */,
 				7254C8391AC4C63C003C8A42 /* opensource */,
 				72217FB31AC0148000D3F891 /* AppDelegate.h */,
 				72217FB41AC0148000D3F891 /* AppDelegate.m */,
@@ -243,6 +245,11 @@
 					72217FAB1AC0148000D3F891 = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = TNNFV3EQZN;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 0;
+							};
+						};
 					};
 					72217FC71AC0148100D3F891 = {
 						CreatedOnToolsVersion = 6.2;
@@ -460,13 +467,14 @@
 			baseConfigurationReference = 4197C57DA38EBD955E5B9C86 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_ENTITLEMENTS = takenote/takenote.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Worathiti Manosroi (TNNFV3EQZN)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Worathiti Manosroi (TNNFV3EQZN)";
 				INFOPLIST_FILE = takenote/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "02dc22d4-ae88-46d2-a5d5-72790a97bc2b";
+				PROVISIONING_PROFILE = "675d3979-558a-4b77-99b4-9d0ee15b3412";
 			};
 			name = Debug;
 		};
@@ -475,13 +483,14 @@
 			baseConfigurationReference = 06DE73F32F81945031822C4B /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_ENTITLEMENTS = takenote/takenote.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Worathiti Manosroi (TNNFV3EQZN)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Worathiti Manosroi (TNNFV3EQZN)";
 				INFOPLIST_FILE = takenote/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "02dc22d4-ae88-46d2-a5d5-72790a97bc2b";
+				PROVISIONING_PROFILE = "675d3979-558a-4b77-99b4-9d0ee15b3412";
 			};
 			name = Release;
 		};

@@ -433,7 +433,17 @@ CGPoint pointNow;
         NSLog(@"delete at indexPath = %@",indexPath );
     }];
     
-    return @[editAction, shareAction,deleteAction];
+    UITableViewRowAction *pinAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"Pin"  handler:^(UITableViewRowAction *action, NSIndexPath *indexPath){
+//        NSArray *indexPaths = [NSArray arrayWithObject:indexPath];
+//        [[self myNotes] removeObjectAtIndex:[indexPath row]];
+//        [[self noteTableView] deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
+//        [self deleteNoteAtIndex:[indexPath row]];
+//        //        [self.noteTableView reloadData];
+//        NSLog(@"delete at indexPath = %@",indexPath );
+    }];
+    
+    pinAction.backgroundColor = [UIColor customGrayColor];
+    return @[pinAction,editAction, shareAction,deleteAction];
 }
 
 
