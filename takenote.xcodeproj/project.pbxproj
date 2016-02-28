@@ -17,6 +17,10 @@
 		72217FC31AC0148100D3F891 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72217FC11AC0148100D3F891 /* LaunchScreen.xib */; };
 		72217FCF1AC0148100D3F891 /* takenoteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 72217FCE1AC0148100D3F891 /* takenoteTests.m */; };
 		7224260D1ACB4538005026F9 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7224260C1ACB4538005026F9 /* SettingsViewController.m */; };
+		7240300E1C83853700874052 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7240300D1C83853700874052 /* NotificationCenter.framework */; };
+		724030121C83853700874052 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 724030111C83853700874052 /* TodayViewController.m */; };
+		724030151C83853700874052 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 724030131C83853700874052 /* MainInterface.storyboard */; };
+		724030191C83853700874052 /* pin-widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7240300C1C83853700874052 /* pin-widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		7254C8381AC4C638003C8A42 /* UIColor+CustomColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 7254C8371AC4C638003C8A42 /* UIColor+CustomColors.m */; };
 		7254C8431AC88C52003C8A42 /* EditNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7254C8421AC88C52003C8A42 /* EditNoteViewController.m */; };
 		7257E5231AD1E8EE00CEE2A3 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 7257E5221AD1E8EE00CEE2A3 /* settings.png */; };
@@ -33,7 +37,28 @@
 			remoteGlobalIDString = 72217FAB1AC0148000D3F891;
 			remoteInfo = takenote;
 		};
+		724030171C83853700874052 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 72217FA41AC0148000D3F891 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7240300B1C83853700874052;
+			remoteInfo = "pin-widget";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7240301D1C83853700874052 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				724030191C83853700874052 /* pin-widget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		06DE73F32F81945031822C4B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -55,6 +80,12 @@
 		72217FCE1AC0148100D3F891 /* takenoteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = takenoteTests.m; sourceTree = "<group>"; };
 		7224260B1ACB4538005026F9 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		7224260C1ACB4538005026F9 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		7240300C1C83853700874052 /* pin-widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "pin-widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7240300D1C83853700874052 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		724030101C83853700874052 /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
+		724030111C83853700874052 /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
+		724030141C83853700874052 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		724030161C83853700874052 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7254C8361AC4C638003C8A42 /* UIColor+CustomColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+CustomColors.h"; sourceTree = "<group>"; };
 		7254C8371AC4C638003C8A42 /* UIColor+CustomColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CustomColors.m"; sourceTree = "<group>"; };
 		7254C8411AC88C52003C8A42 /* EditNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditNoteViewController.h; sourceTree = "<group>"; };
@@ -83,6 +114,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		724030091C83853700874052 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7240300E1C83853700874052 /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -99,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				A354654FE5B2034FF162EBEB /* libPods.a */,
+				7240300D1C83853700874052 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -109,6 +149,7 @@
 				7254C83A1AC8742C003C8A42 /* asset */,
 				72217FAE1AC0148000D3F891 /* takenote */,
 				72217FCB1AC0148100D3F891 /* takenoteTests */,
+				7240300F1C83853700874052 /* pin-widget */,
 				72217FAD1AC0148000D3F891 /* Products */,
 				19118F660DEA2D87E2E3184D /* Pods */,
 				46381784168D67EC15B3CC42 /* Frameworks */,
@@ -120,6 +161,7 @@
 			children = (
 				72217FAC1AC0148000D3F891 /* takenote.app */,
 				72217FC81AC0148100D3F891 /* takenoteTests.xctest */,
+				7240300C1C83853700874052 /* pin-widget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -173,6 +215,17 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		7240300F1C83853700874052 /* pin-widget */ = {
+			isa = PBXGroup;
+			children = (
+				724030101C83853700874052 /* TodayViewController.h */,
+				724030111C83853700874052 /* TodayViewController.m */,
+				724030131C83853700874052 /* MainInterface.storyboard */,
+				724030161C83853700874052 /* Info.plist */,
+			);
+			path = "pin-widget";
+			sourceTree = "<group>";
+		};
 		7254C8391AC4C63C003C8A42 /* opensource */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,10 +258,12 @@
 				72217FA91AC0148000D3F891 /* Frameworks */,
 				72217FAA1AC0148000D3F891 /* Resources */,
 				8EA88A5F7A9319CFA503DD67 /* Copy Pods Resources */,
+				7240301D1C83853700874052 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				724030181C83853700874052 /* PBXTargetDependency */,
 			);
 			name = takenote;
 			productName = takenote;
@@ -233,6 +288,23 @@
 			productReference = 72217FC81AC0148100D3F891 /* takenoteTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		7240300B1C83853700874052 /* pin-widget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7240301C1C83853700874052 /* Build configuration list for PBXNativeTarget "pin-widget" */;
+			buildPhases = (
+				724030081C83853700874052 /* Sources */,
+				724030091C83853700874052 /* Frameworks */,
+				7240300A1C83853700874052 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "pin-widget";
+			productName = "pin-widget";
+			productReference = 7240300C1C83853700874052 /* pin-widget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -255,6 +327,10 @@
 						CreatedOnToolsVersion = 6.2;
 						TestTargetID = 72217FAB1AC0148000D3F891;
 					};
+					7240300B1C83853700874052 = {
+						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = TNNFV3EQZN;
+					};
 				};
 			};
 			buildConfigurationList = 72217FA71AC0148000D3F891 /* Build configuration list for PBXProject "takenote" */;
@@ -272,6 +348,7 @@
 			targets = (
 				72217FAB1AC0148000D3F891 /* takenote */,
 				72217FC71AC0148100D3F891 /* takenoteTests */,
+				7240300B1C83853700874052 /* pin-widget */,
 			);
 		};
 /* End PBXProject section */
@@ -295,6 +372,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7240300A1C83853700874052 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				724030151C83853700874052 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,6 +441,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		724030081C83853700874052 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				724030121C83853700874052 /* TodayViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -363,6 +456,11 @@
 			isa = PBXTargetDependency;
 			target = 72217FAB1AC0148000D3F891 /* takenote */;
 			targetProxy = 72217FC91AC0148100D3F891 /* PBXContainerItemProxy */;
+		};
+		724030181C83853700874052 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7240300B1C83853700874052 /* pin-widget */;
+			targetProxy = 724030171C83853700874052 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -381,6 +479,14 @@
 				72217FC21AC0148100D3F891 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		724030131C83853700874052 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				724030141C83853700874052 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -528,6 +634,41 @@
 			};
 			name = Release;
 		};
+		7240301A1C83853700874052 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "pin-widget/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.pungme.takenote.pin-widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		7240301B1C83853700874052 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "pin-widget/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.pungme.takenote.pin-widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -557,6 +698,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		7240301C1C83853700874052 /* Build configuration list for PBXNativeTarget "pin-widget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7240301A1C83853700874052 /* Debug */,
+				7240301B1C83853700874052 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
