@@ -111,6 +111,10 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     //    return _itemsCount;//self.boxes.count;
 //    return [self.myNotes count];
+    if([self.myNotes count] < 5){
+        return [self.myNotes count];
+    }
+    
     return 5;
     
 }
