@@ -520,7 +520,7 @@ CGPoint pointNow;
         }
     }
 
-    return defaultRowHeight;
+    return defaultRowHeight;   
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
