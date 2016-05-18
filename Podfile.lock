@@ -1,5 +1,4 @@
 PODS:
-  - BubbleTransition-objc (0.1.0)
   - NSDate+TimeAgo (1.0.3)
   - pop (1.0.7)
   - SDWebImage (3.7.2):
@@ -7,15 +6,15 @@ PODS:
   - SDWebImage/Core (3.7.2)
 
 DEPENDENCIES:
-  - BubbleTransition-objc
   - NSDate+TimeAgo
   - pop
   - SDWebImage (~> 3.7)
 
 SPEC CHECKSUMS:
-  BubbleTransition-objc: 0b4ec87d4538ee1b1972667eda0f9422723305de
   NSDate+TimeAgo: 416f55d2696d3744c313091c5a9280d47f8238fe
   pop: 628ffc631644601567ee8bfaaaea493ebd7d0923
   SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 812759a8cda72232fd83430e80823a402cbd966b
+
+COCOAPODS: 1.0.0
