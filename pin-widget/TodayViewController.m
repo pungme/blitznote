@@ -20,6 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+//    [self.extensionContext setWidgetLargestAvailableDisplayMode:NCWidgetDisplayModeExpanded];
 //    UILabel *list1 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 50)];
 //    list1.text = @"bla bla bla bla";
 //    list1.textColor = [UIColor whiteColor];
@@ -37,7 +38,8 @@
     CGFloat screenWidth = screenRect.size.width;
     CGFloat screenHeight = screenRect.size.height;
     
-    self.pinNoteTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight/3) style:UITableViewStylePlain];
+    self.pinNoteTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight/2)
+                                                        style:UITableViewStylePlain];
     self.pinNoteTableView.delegate = self;
     self.pinNoteTableView.dataSource = self;
     
@@ -103,7 +105,7 @@
     
 //    cell.textLabel.text = @"HEYYY";
     cell.textLabel.text = [[self.myNotes objectAtIndex:indexPath.row] objectForKey:@"noteContent"];
-    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.textLabel.textColor = [UIColor blackColor];
     //etc.
     return cell;
 }
