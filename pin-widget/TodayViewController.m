@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    [self.extensionContext setWidgetLargestAvailableDisplayMode:NCWidgetDisplayModeExpanded];
+    [self.extensionContext setWidgetLargestAvailableDisplayMode:NCWidgetDisplayModeExpanded];
 //    UILabel *list1 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 50)];
 //    list1.text = @"bla bla bla bla";
 //    list1.textColor = [UIColor whiteColor];
@@ -45,7 +45,7 @@
     
 //    self.preferredContentSize = self.pinNoteTableView.contentSize;
     self.preferredContentSize = CGSizeMake(0, screenHeight/3 -15);
-    self.view.translatesAutoresizingMaskIntoConstraints = NO;
+//    self.view.translatesAutoresizingMaskIntoConstraints = NO;
     
     [self.view addSubview:self.pinNoteTableView];
 //    self.view.frame = CGRectMake(0, 0, screenWidth, screenHeight/2);
@@ -119,6 +119,14 @@
     
     return 5;
     
+}
+
+- (void)widgetActiveDisplayModeDidChange:(NCWidgetDisplayMode)activeDisplayMode withMaximumSize:(CGSize)maxSize {
+    if (activeDisplayMode == NCWidgetDisplayModeExpanded) {
+        self.preferredContentSize = CGSizeMake(0.0, 200.0);
+    } else if (activeDisplayMode == NCWidgetDisplayModeCompact) {
+        self.preferredContentSize = maxSize;
+    }
 }
 
 -(UIEdgeInsets)widgetMarginInsetsForProposedMarginInsets:(UIEdgeInsets)defaultMarginInsets{
