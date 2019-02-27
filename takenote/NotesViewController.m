@@ -276,7 +276,7 @@ CGPoint pointNow;
 {
     
     POPBasicAnimation *layerPositionAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerPositionY];
-    layerPositionAnimation.toValue = @(self.view.bounds.size.height - 45);
+    layerPositionAnimation.toValue = @(self.view.bounds.size.height - 55);
     [self.takeNoteButton.layer pop_addAnimation:layerPositionAnimation forKey:@"layerPositionAnimation"];
 
 }

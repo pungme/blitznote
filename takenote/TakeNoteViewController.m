@@ -160,7 +160,7 @@
 //                                           self.view.frame.size.height);
     
     NSLog(@"contentOffset = %f",scrollView.contentOffset.y);
-    CGFloat colorOffset = (scrollView.contentOffset.y) / 320;
+    CGFloat colorOffset = (scrollView.contentOffset.y + 44 ) / 320;
 //    NSLog(@"color offset = %f",colorOffset);
     self.view.backgroundColor = [UIColor colorWithRed:1.0 + colorOffset green:1.0+colorOffset blue:1.0+colorOffset alpha:1.0];
     

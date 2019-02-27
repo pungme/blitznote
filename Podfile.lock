@@ -1,20 +1,26 @@
 PODS:
-  - NSDate+TimeAgo (1.0.3)
+  - "NSDate+TimeAgo (1.0.3)"
   - pop (1.0.7)
   - SDWebImage (3.7.2):
     - SDWebImage/Core (= 3.7.2)
   - SDWebImage/Core (3.7.2)
 
 DEPENDENCIES:
-  - NSDate+TimeAgo
+  - "NSDate+TimeAgo"
   - pop
   - SDWebImage (~> 3.7)
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - "NSDate+TimeAgo"
+    - pop
+    - SDWebImage
+
 SPEC CHECKSUMS:
-  NSDate+TimeAgo: 416f55d2696d3744c313091c5a9280d47f8238fe
+  "NSDate+TimeAgo": 416f55d2696d3744c313091c5a9280d47f8238fe
   pop: 628ffc631644601567ee8bfaaaea493ebd7d0923
   SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
 
 PODFILE CHECKSUM: 812759a8cda72232fd83430e80823a402cbd966b
 
-COCOAPODS: 1.0.0
+COCOAPODS: 1.6.0
