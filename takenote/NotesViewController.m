@@ -112,7 +112,7 @@ CGPoint pointNow;
 //    _searchBar.layer.opacity = 0.4;
     
     self.noteTableView.tableHeaderView = _searchBar;
-    self.noteTableView.contentOffset = CGPointMake(0, CGRectGetHeight(_searchBar.frame));
+    self.noteTableView.contentOffset = CGPointMake(0, CGRectGetHeight(_searchBar.frame) - 51);
     
 //    [self addTakeNoteButton];
 //    [self addSettingButton];
@@ -148,9 +148,10 @@ CGPoint pointNow;
     
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGFloat screenWidth = screenRect.size.width;
-    
+    CGFloat screenHeight = screenRect.size.height;
+
     self.settingButton = [[UIControl alloc] initWithFrame:CGRectMake(0, 0, circleRadius, circleRadius)];
-    self.settingButton.center = CGPointMake(screenWidth - 30, 65);
+    self.settingButton.center = CGPointMake(screenWidth - 35, screenHeight - 35);
     self.settingButton.layer.cornerRadius = CGRectGetWidth(self.settingButton.bounds)/2;
     
     ///// TODO : change according to the weekday ...
@@ -193,7 +194,7 @@ CGPoint pointNow;
     
     
     self.takeNoteButton = [[UIControl alloc] initWithFrame:CGRectMake(0, 0, circleRadius, circleRadius)];
-    self.takeNoteButton.center = CGPointMake(self.view.center.x, self.view.bounds.size.height - 45);
+    self.takeNoteButton.center = CGPointMake(self.view.center.x, self.view.bounds.size.height - 55);
     self.takeNoteButton.layer.cornerRadius = CGRectGetWidth(self.takeNoteButton.bounds)/2;
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init] ;
@@ -310,6 +311,7 @@ CGPoint pointNow;
             isScrollUp = NO;
             NSLog(@"down");
             [self showTakeNoteButton];
+            [self showSettingButton];
         }
         //push the button up
     } else if (scrollView.contentOffset.y > pointNow.y) {
@@ -343,10 +345,10 @@ CGPoint pointNow;
 //        [self performSegueWithIdentifier: @"takenotesegue" sender: self];
     }else{
         [self.noteTableView reloadData];
-        if([self.myNotes count] > 0){
-            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-            [self.noteTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
-        }
+//        if([self.myNotes count] > 0){
+//            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+//            [self.noteTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+//        }
 //        [self.noteTableView reloadData];
 //        [self.noteTableView reloadRowsAtIndexPaths:0 withRowAnimation:UITableViewRowAnimationFade];
     }

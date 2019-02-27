@@ -112,7 +112,7 @@
                        options:UIViewAnimationOptionTransitionCrossDissolve
                     animations:NULL
                     completion:NULL];
-    if( scrollView.contentOffset.y < 0){
+    if( scrollView.contentOffset.y + 44 < 0){
         //animate
         self.swipeDownLabel.hidden = NO;
     }else{
@@ -123,11 +123,11 @@
                                            self.swipeDownLabel.frame.size.width,
                                            self.swipeDownLabel.frame.size.height);
     
-    CGFloat colorOffset = (scrollView.contentOffset.y) / 350;
+    CGFloat colorOffset = (scrollView.contentOffset.y + 44) / 350;
     //    NSLog(@"color offset = %f",colorOffset);
     self.view.backgroundColor = [UIColor colorWithRed:1.0 + colorOffset green:1.0+colorOffset blue:1.0+colorOffset alpha:1.0];
     
-    if (scrollView.contentOffset.y < -100)
+    if (scrollView.contentOffset.y < -200)
     {
         NSLog(@"dismiss ...");
         [self dismissViewControllerAnimated:YES completion:^{
