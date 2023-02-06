@@ -151,7 +151,7 @@ CGPoint pointNow;
     CGFloat screenHeight = screenRect.size.height;
 
     self.settingButton = [[UIControl alloc] initWithFrame:CGRectMake(0, 0, circleRadius, circleRadius)];
-    self.settingButton.center = CGPointMake(screenWidth - 35, screenHeight - 35);
+    self.settingButton.center = CGPointMake(screenWidth - 35, screenHeight - 45);
     self.settingButton.layer.cornerRadius = CGRectGetWidth(self.settingButton.bounds)/2;
     
     ///// TODO : change according to the weekday ...
@@ -251,14 +251,14 @@ CGPoint pointNow;
 //    [self.settingButton.layer pop_addAnimation:layerScaleAnimation forKey:@"layerScaleAnimation"];
     
     POPBasicAnimation *layerPositionAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerPositionX];
-    layerPositionAnimation.toValue = @(self.view.bounds.size.width + 65);
+    layerPositionAnimation.toValue = @(self.view.bounds.size.width + 85);
     [self.settingButton.layer pop_addAnimation:layerPositionAnimation forKey:@"layerPositionAnimation"];
 }
 - (void)showSettingButton
 {
     
     POPBasicAnimation *layerPositionAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerPositionX];
-    layerPositionAnimation.toValue = @(self.view.bounds.size.width - 30);
+    layerPositionAnimation.toValue = @(self.view.bounds.size.width - 40);
     [self.settingButton.layer pop_addAnimation:layerPositionAnimation forKey:@"layerPositionAnimation"];
     
 }
